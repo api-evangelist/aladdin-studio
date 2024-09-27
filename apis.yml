@@ -1,5 +1,4 @@
 
----
 name: Aladdin Studio
 description: >-
   Aladdin Studio APIs enable you to build your own solutions with access to the
@@ -31,4 +30,3 @@ overlays:
   - type: API Evangelist Ratings
     url: overlays/apis-io-search.yml
 aid: aladdin-studio-apis
----
