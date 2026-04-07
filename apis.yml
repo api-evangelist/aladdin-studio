@@ -3,8 +3,8 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/apis.yml
 name: Aladdin Studio
 tags:
-  - Financial
   - Data
+  - Financial
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 description: >-
