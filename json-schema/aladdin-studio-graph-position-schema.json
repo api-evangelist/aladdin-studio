@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-graph-position-schema.json",
+  "title": "Position",
+  "description": "A security position within a portfolio",
+  "type": "object",
+  "properties": {
+    "securityId": {
+      "type": "string",
+      "description": "Security identifier",
+      "example": "US0378331005"
+    },
+    "securityName": {
+      "type": "string",
+      "description": "Security name",
+      "example": "Apple Inc"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Number of shares or units held",
+      "example": 1000
+    },
+    "marketValue": {
+      "type": "number",
+      "description": "Current market value in portfolio base currency",
+      "example": 195000.0
+    },
+    "weight": {
+      "type": "number",
+      "description": "Portfolio weight as decimal",
+      "example": 0.025
+    },
+    "currency": {
+      "type": "string",
+      "description": "Security trading currency",
+      "example": "USD"
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Asset class classification",
+      "example": "Equity"
+    },
+    "sector": {
+      "type": "string",
+      "description": "GICS sector",
+      "example": "Technology"
+    }
+  }
+}

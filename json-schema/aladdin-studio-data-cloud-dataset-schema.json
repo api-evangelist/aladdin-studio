@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-data-cloud-dataset-schema.json",
+  "title": "Dataset",
+  "description": "An available dataset in the Aladdin Data Cloud",
+  "type": "object",
+  "properties": {
+    "datasetId": {
+      "type": "string",
+      "description": "Unique dataset identifier (schema.table)",
+      "example": "PORTFOLIO.HOLDINGS"
+    },
+    "name": {
+      "type": "string",
+      "description": "Dataset display name",
+      "example": "Portfolio Holdings"
+    },
+    "schema": {
+      "type": "string",
+      "description": "Snowflake schema",
+      "example": "PORTFOLIO"
+    },
+    "description": {
+      "type": "string",
+      "description": "Dataset description",
+      "example": "Daily portfolio positions and holdings"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp",
+      "example": "2026-04-19T00:00:00Z"
+    }
+  }
+}

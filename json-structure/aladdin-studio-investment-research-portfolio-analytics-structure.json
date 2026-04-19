@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json",
+  "name": "PortfolioAnalytics",
+  "type": "object",
+  "description": "Investment analytics and performance metrics for a portfolio",
+  "properties": {
+    "portfolioId": {
+      "type": "string",
+      "description": "Portfolio identifier",
+      "example": "PF-123456"
+    },
+    "fromDate": {
+      "type": "date",
+      "description": "Analytics period start date",
+      "example": "2026-01-01"
+    },
+    "toDate": {
+      "type": "date",
+      "description": "Analytics period end date",
+      "example": "2026-04-19"
+    },
+    "totalReturn": {
+      "type": "double",
+      "description": "Total portfolio return for the period",
+      "example": 0.0485
+    },
+    "excessReturn": {
+      "type": "double",
+      "description": "Excess return vs benchmark",
+      "example": 0.0132
+    },
+    "informationRatio": {
+      "type": "double",
+      "description": "Information ratio for the period",
+      "example": 0.85
+    },
+    "sharpeRatio": {
+      "type": "double",
+      "description": "Sharpe ratio for the period",
+      "example": 1.24
+    }
+  }
+}

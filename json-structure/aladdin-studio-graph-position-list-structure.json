@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-graph-position-list-structure.json",
+  "name": "PositionList",
+  "type": "object",
+  "description": "List of portfolio positions as of a date",
+  "properties": {
+    "positions": {
+      "type": "array",
+      "description": "Array of position objects",
+      "items": {
+        "$ref": "#/components/schemas/Position"
+      }
+    },
+    "portfolioId": {
+      "type": "string",
+      "description": "Portfolio identifier",
+      "example": "PF-123456"
+    },
+    "asOfDate": {
+      "type": "date",
+      "description": "Position date",
+      "example": "2026-04-19"
+    },
+    "totalMarketValue": {
+      "type": "double",
+      "description": "Total portfolio market value",
+      "example": 7800000.0
+    }
+  }
+}

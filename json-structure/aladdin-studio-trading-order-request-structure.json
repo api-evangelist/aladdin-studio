@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-trading-order-request-structure.json",
+  "name": "OrderRequest",
+  "type": "object",
+  "description": "Request body for creating a new trading order",
+  "properties": {
+    "portfolioId": {
+      "type": "string",
+      "description": "Portfolio identifier",
+      "example": "PF-123456"
+    },
+    "securityId": {
+      "type": "string",
+      "description": "Security identifier",
+      "example": "US0378331005"
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side",
+      "enum": [
+        "buy",
+        "sell"
+      ],
+      "example": "buy"
+    },
+    "quantity": {
+      "type": "double",
+      "description": "Order quantity",
+      "example": 100
+    },
+    "orderType": {
+      "type": "string",
+      "description": "Order type",
+      "enum": [
+        "market",
+        "limit",
+        "stop"
+      ],
+      "example": "market"
+    },
+    "limitPrice": {
+      "type": "double",
+      "description": "Limit price (required for limit orders)",
+      "example": 195.0
+    }
+  },
+  "required": [
+    "portfolioId",
+    "securityId",
+    "side",
+    "quantity"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "datasetId": "PORTFOLIO.HOLDINGS",
+  "name": "Portfolio Holdings",
+  "schema": "PORTFOLIO",
+  "description": "Daily portfolio positions and holdings",
+  "lastUpdated": "2026-04-19T00:00:00Z"
+}

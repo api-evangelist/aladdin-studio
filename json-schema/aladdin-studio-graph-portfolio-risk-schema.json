@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-graph-portfolio-risk-schema.json",
+  "title": "PortfolioRisk",
+  "description": "Risk analytics for a portfolio computed by Aladdin's risk engine",
+  "type": "object",
+  "properties": {
+    "portfolioId": {
+      "type": "string",
+      "description": "Portfolio identifier",
+      "example": "PF-123456"
+    },
+    "asOfDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Risk calculation date",
+      "example": "2026-04-19"
+    },
+    "trackingError": {
+      "type": "number",
+      "description": "Annualized tracking error vs benchmark",
+      "example": 0.0342
+    },
+    "var95": {
+      "type": "number",
+      "description": "95% Value at Risk (1-day)",
+      "example": -0.0285
+    },
+    "beta": {
+      "type": "number",
+      "description": "Portfolio beta vs benchmark",
+      "example": 1.02
+    },
+    "volatility": {
+      "type": "number",
+      "description": "Annualized portfolio volatility",
+      "example": 0.152
+    },
+    "factorExposures": {
+      "type": "array",
+      "description": "Factor exposure breakdown",
+      "items": {
+        "$ref": "#/components/schemas/FactorExposure"
+      }
+    },
+    "riskModel": {
+      "type": "string",
+      "description": "Risk model used for calculation",
+      "example": "AXUS4"
+    }
+  }
+}

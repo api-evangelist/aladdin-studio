@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-data-cloud-dataset-list-structure.json",
+  "name": "DatasetList",
+  "type": "object",
+  "description": "List of available datasets in the Data Cloud",
+  "properties": {
+    "datasets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dataset"
+      }
+    }
+  }
+}

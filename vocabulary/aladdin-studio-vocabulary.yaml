@@ -1,0 +1,414 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Aladdin Studio
+  description: >-
+    Unified taxonomy for the Aladdin Studio developer platform covering
+    portfolio management, risk analytics, trading, investment research,
+    and Aladdin Data Cloud APIs.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: aladdin-graph
+      version: "1.0.0"
+      baseUrl: "https://api.blackrock.com/v1"
+      status: active
+      description: Aladdin Graph API for portfolio and risk data
+    - namespace: aladdin-data-cloud
+      version: "1.0.0"
+      baseUrl: "https://api.blackrock.com/adc/v1"
+      status: active
+      description: Aladdin Data Cloud API for Snowflake analytics
+    - namespace: aladdin-trading
+      version: "1.0.0"
+      baseUrl: "https://api.blackrock.com/trading/v1"
+      status: active
+      description: Aladdin Trading API for order management
+    - namespace: aladdin-investment-research
+      version: "1.0.0"
+      baseUrl: "https://api.blackrock.com/research/v1"
+      status: active
+      description: Aladdin Investment Research API
+
+  resources:
+    - name: portfolios
+      apis:
+        - aladdin-graph
+      actions:
+        - list
+        - get
+      description: Investment portfolios and associated metadata
+    - name: positions
+      apis:
+        - aladdin-graph
+      actions:
+        - get
+      description: Portfolio holdings and security positions
+    - name: risk
+      apis:
+        - aladdin-graph
+      actions:
+        - get
+      description: Risk analytics including factor exposures and VaR
+    - name: securities
+      apis:
+        - aladdin-graph
+      actions:
+        - get
+      description: Security reference data and classification
+    - name: connections
+      apis:
+        - aladdin-data-cloud
+      actions:
+        - list
+      description: Data Cloud Snowflake connections
+    - name: queries
+      apis:
+        - aladdin-data-cloud
+      actions:
+        - execute
+      description: SQL queries against Data Cloud datasets
+    - name: datasets
+      apis:
+        - aladdin-data-cloud
+      actions:
+        - list
+      description: Available Data Cloud tables and datasets
+    - name: orders
+      apis:
+        - aladdin-trading
+      actions:
+        - list
+        - get
+        - create
+      description: Trading orders in the Aladdin system
+    - name: research
+      apis:
+        - aladdin-investment-research
+      actions:
+        - get
+      description: Investment research and analyst ratings
+    - name: analytics
+      apis:
+        - aladdin-investment-research
+      actions:
+        - get
+      description: Portfolio performance and attribution analytics
+
+  actions:
+    - name: list
+      httpMethods:
+        - GET
+      pattern: read
+      description: List resources with pagination
+    - name: get
+      httpMethods:
+        - GET
+      pattern: read
+      description: Retrieve a specific resource by identifier
+    - name: create
+      httpMethods:
+        - POST
+      pattern: write
+      description: Create a new resource
+    - name: execute
+      httpMethods:
+        - POST
+      pattern: query
+      description: Execute a query or computation
+
+  schemas:
+    core:
+      - name: Portfolio
+        description: Aladdin portfolio with metadata and classification
+        keyProperties:
+          - portfolioId
+          - name
+          - currency
+          - status
+          - benchmarkId
+      - name: Position
+        description: Security position within a portfolio
+        keyProperties:
+          - securityId
+          - quantity
+          - marketValue
+          - weight
+      - name: Security
+        description: Security reference data from Aladdin
+        keyProperties:
+          - securityId
+          - name
+          - ticker
+          - assetClass
+          - sector
+          - country
+    risk:
+      - name: PortfolioRisk
+        description: Risk analytics computed by Aladdin's risk engine
+        keyProperties:
+          - trackingError
+          - var95
+          - beta
+          - volatility
+          - factorExposures
+      - name: FactorExposure
+        description: Risk factor exposure for a portfolio
+        keyProperties:
+          - factorName
+          - exposure
+          - contribution
+    trading:
+      - name: Order
+        description: Trading order in the Aladdin system
+        keyProperties:
+          - orderId
+          - portfolioId
+          - securityId
+          - side
+          - quantity
+          - status
+    data_cloud:
+      - name: Connection
+        description: Aladdin Data Cloud Snowflake connection
+        keyProperties:
+          - connectionId
+          - accountName
+          - database
+          - warehouse
+      - name: QueryResult
+        description: Results from a Data Cloud query execution
+        keyProperties:
+          - queryId
+          - status
+          - rowCount
+          - columns
+          - rows
+
+  parameters:
+    pagination:
+      - name: page
+        description: Page number for paginated results
+        type: integer
+      - name: pageSize
+        description: Number of results per page
+        type: integer
+    identifiers:
+      - name: portfolioId
+        description: Unique Aladdin portfolio identifier
+        type: string
+      - name: securityId
+        description: Security identifier (ISIN, CUSIP, or internal)
+        type: string
+      - name: orderId
+        description: Trading order identifier
+        type: string
+      - name: connectionId
+        description: Data Cloud connection identifier
+        type: string
+    filters:
+      - name: asOfDate
+        description: Date for point-in-time data retrieval (YYYY-MM-DD)
+        type: string
+      - name: fromDate
+        description: Start date for time-series data
+        type: string
+      - name: toDate
+        description: End date for time-series data
+        type: string
+      - name: status
+        description: Status filter for orders or portfolios
+        type: string
+      - name: model
+        description: Risk model identifier (e.g., AXUS4)
+        type: string
+
+  enums:
+    portfolioStatus:
+      - active
+      - inactive
+      - pending
+    orderSide:
+      - buy
+      - sell
+    orderStatus:
+      - pending
+      - filled
+      - partially_filled
+      - cancelled
+    orderType:
+      - market
+      - limit
+      - stop
+    securityIdType:
+      - ISIN
+      - CUSIP
+      - SEDOL
+      - INTERNAL
+    analystRating:
+      - buy
+      - hold
+      - sell
+
+  authentication:
+    schemes:
+      - name: OAuth2 Client Credentials
+        description: Machine-to-machine authentication for server applications
+        apis:
+          - aladdin-graph
+          - aladdin-data-cloud
+          - aladdin-trading
+          - aladdin-investment-research
+        scopes:
+          - portfolio:read
+          - risk:read
+          - trading:read
+          - trading:write
+          - research:read
+          - analytics:read
+          - adc:read
+      - name: OAuth2 Refresh Token
+        description: Interactive authentication for user-based workflows
+        apis:
+          - aladdin-graph
+          - aladdin-data-cloud
+      - name: Basic Auth
+        description: Token-based basic authentication
+        apis:
+          - aladdin-graph
+      - name: Snowflake JWT
+        description: RSA key pair based JWT for Data Cloud access
+        apis:
+          - aladdin-data-cloud
+
+capability:
+  workflows:
+    - name: Portfolio Analytics
+      file: capabilities/portfolio-analytics.yaml
+      description: >-
+        Unified portfolio analytics combining Graph API and Data Cloud for
+        institutional portfolio managers and risk analysts
+      apisCombined:
+        - aladdin-graph
+        - aladdin-data-cloud
+      toolCount: 7
+      personas:
+        - Portfolio Manager
+        - Risk Analyst
+        - Quantitative Researcher
+
+  personas:
+    - id: portfolio-manager
+      name: Portfolio Manager
+      description: >-
+        Institutional portfolio manager monitoring holdings, performance,
+        and risk across Aladdin-managed portfolios.
+      workflows:
+        - Portfolio Analytics
+    - id: risk-analyst
+      name: Risk Analyst
+      description: >-
+        Risk professional analyzing factor exposures, VaR, and stress test
+        results for institutional portfolios using Aladdin's risk engine.
+      workflows:
+        - Portfolio Analytics
+    - id: quantitative-researcher
+      name: Quantitative Researcher
+      description: >-
+        Quant researcher building and backtesting models using Aladdin
+        Data Cloud for large-scale portfolio analytics.
+      workflows:
+        - Portfolio Analytics
+
+  domains:
+    - name: Portfolio Management
+      description: Portfolio metadata, positions, and performance tracking
+      resources:
+        - portfolios
+        - positions
+        - analytics
+    - name: Risk Management
+      description: Risk analytics, factor exposures, and stress testing
+      resources:
+        - risk
+    - name: Trading
+      description: Order management and execution workflows
+      resources:
+        - orders
+    - name: Data Cloud
+      description: Large-scale analytics on Snowflake-based data warehouse
+      resources:
+        - connections
+        - datasets
+        - queries
+    - name: Research
+      description: Investment research and analyst insights
+      resources:
+        - research
+
+  namespaces:
+    - name: aladdin-graph
+      type: consumed
+      baseUri: "https://api.blackrock.com/v1"
+    - name: aladdin-data-cloud
+      type: consumed
+      baseUri: "https://api.blackrock.com/adc/v1"
+    - name: aladdin-portfolio-analytics-api
+      type: rest
+      port: 8080
+    - name: aladdin-portfolio-analytics-mcp
+      type: mcp
+      port: 9090
+
+  binds:
+    - name: ALADDIN_API_TOKEN
+      description: OAuth Bearer token for Aladdin Graph API
+      workflows:
+        - Portfolio Analytics
+    - name: ALADDIN_ADC_TOKEN
+      description: OAuth Bearer token for Aladdin Data Cloud API
+      workflows:
+        - Portfolio Analytics
+
+crossReference:
+  - resource: portfolios
+    operations:
+      - list-portfolios
+      - get-portfolio
+    workflows:
+      - Portfolio Analytics
+    personas:
+      - Portfolio Manager
+      - Risk Analyst
+  - resource: positions
+    operations:
+      - get-positions
+    workflows:
+      - Portfolio Analytics
+    personas:
+      - Portfolio Manager
+      - Risk Analyst
+  - resource: risk
+    operations:
+      - get-risk
+    workflows:
+      - Portfolio Analytics
+    personas:
+      - Risk Analyst
+      - Portfolio Manager
+  - resource: queries
+    operations:
+      - execute-query
+    workflows:
+      - Portfolio Analytics
+    personas:
+      - Quantitative Researcher
+  - resource: datasets
+    operations:
+      - list-datasets
+    workflows:
+      - Portfolio Analytics
+    personas:
+      - Quantitative Researcher

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-investment-research-security-research-schema.json",
+  "title": "SecurityResearch",
+  "description": "Investment research data for a security",
+  "type": "object",
+  "properties": {
+    "securityId": {
+      "type": "string",
+      "description": "Security identifier",
+      "example": "US0378331005"
+    },
+    "ticker": {
+      "type": "string",
+      "description": "Ticker symbol",
+      "example": "AAPL"
+    },
+    "rating": {
+      "type": "string",
+      "description": "Analyst consensus rating",
+      "enum": [
+        "buy",
+        "hold",
+        "sell"
+      ],
+      "example": "buy"
+    },
+    "priceTarget": {
+      "type": "number",
+      "description": "Consensus price target",
+      "example": 225.0
+    },
+    "analystCount": {
+      "type": "integer",
+      "description": "Number of analysts covering the security",
+      "example": 42
+    },
+    "consensusDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of consensus calculation",
+      "example": "2026-04-19"
+    }
+  }
+}

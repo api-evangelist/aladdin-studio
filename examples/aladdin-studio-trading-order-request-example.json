@@ -1,0 +1,8 @@
+{
+  "portfolioId": "PF-123456",
+  "securityId": "US0378331005",
+  "side": "buy",
+  "quantity": 100,
+  "orderType": "market",
+  "limitPrice": 195.0
+}

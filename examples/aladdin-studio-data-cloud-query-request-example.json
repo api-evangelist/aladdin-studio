@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100",
+  "warehouse": "ANALYTICS_WH",
+  "timeout": 300,
+  "maxRows": 10000
+}

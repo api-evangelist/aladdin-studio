@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-graph-factor-exposure-structure.json",
+  "name": "FactorExposure",
+  "type": "object",
+  "description": "Risk factor exposure for a portfolio",
+  "properties": {
+    "factorName": {
+      "type": "string",
+      "description": "Risk factor name",
+      "example": "Market"
+    },
+    "exposure": {
+      "type": "double",
+      "description": "Factor exposure value",
+      "example": 1.02
+    },
+    "contribution": {
+      "type": "double",
+      "description": "Contribution to portfolio risk",
+      "example": 0.0285
+    }
+  }
+}

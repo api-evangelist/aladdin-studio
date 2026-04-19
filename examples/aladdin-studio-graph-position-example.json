@@ -1,0 +1,10 @@
+{
+  "securityId": "US0378331005",
+  "securityName": "Apple Inc",
+  "quantity": 1000,
+  "marketValue": 195000.0,
+  "weight": 0.025,
+  "currency": "USD",
+  "assetClass": "Equity",
+  "sector": "Technology"
+}

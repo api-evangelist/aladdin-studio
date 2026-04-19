@@ -1,0 +1,13 @@
+{
+  "orderId": "ORD-987654",
+  "portfolioId": "PF-123456",
+  "securityId": "US0378331005",
+  "side": "buy",
+  "quantity": 100,
+  "filledQuantity": 100,
+  "averagePrice": 195.0,
+  "status": "filled",
+  "orderType": "market",
+  "createdAt": "2026-04-19T10:30:00Z",
+  "filledAt": "2026-04-19T10:31:05Z"
+}

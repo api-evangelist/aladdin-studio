@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-data-cloud-query-request-schema.json",
+  "title": "QueryRequest",
+  "description": "SQL query request for the Aladdin Data Cloud",
+  "type": "object",
+  "properties": {
+    "sql": {
+      "type": "string",
+      "description": "SQL query to execute against the Aladdin Data Cloud",
+      "example": "SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100"
+    },
+    "warehouse": {
+      "type": "string",
+      "description": "Snowflake virtual warehouse to use",
+      "example": "ANALYTICS_WH"
+    },
+    "timeout": {
+      "type": "integer",
+      "description": "Query timeout in seconds",
+      "example": 300
+    },
+    "maxRows": {
+      "type": "integer",
+      "description": "Maximum number of rows to return",
+      "example": 10000
+    }
+  },
+  "required": [
+    "sql"
+  ]
+}

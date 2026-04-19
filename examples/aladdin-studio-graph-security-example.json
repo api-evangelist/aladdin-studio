@@ -1,0 +1,12 @@
+{
+  "securityId": "US0378331005",
+  "name": "Apple Inc",
+  "ticker": "AAPL",
+  "isin": "US0378331005",
+  "cusip": 37833100,
+  "assetClass": "Equity",
+  "sector": "Technology",
+  "country": "US",
+  "currency": "USD",
+  "exchange": "NASDAQ"
+}

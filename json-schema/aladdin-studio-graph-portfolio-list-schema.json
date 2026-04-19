@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-graph-portfolio-list-schema.json",
+  "title": "PortfolioList",
+  "description": "Paginated list of portfolios",
+  "type": "object",
+  "properties": {
+    "portfolios": {
+      "type": "array",
+      "description": "Array of portfolio objects",
+      "items": {
+        "$ref": "#/components/schemas/Portfolio"
+      }
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of portfolios",
+      "example": 125
+    },
+    "page": {
+      "type": "integer",
+      "description": "Current page number",
+      "example": 1
+    },
+    "pageSize": {
+      "type": "integer",
+      "description": "Number of results per page",
+      "example": 100
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-data-cloud-connection-list-structure.json",
+  "name": "ConnectionList",
+  "type": "object",
+  "description": "List of available Data Cloud connections",
+  "properties": {
+    "connections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Connection"
+      }
+    }
+  }
+}

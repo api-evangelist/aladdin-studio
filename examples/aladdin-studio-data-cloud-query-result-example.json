@@ -1,0 +1,14 @@
+{
+  "queryId": "qry-a1b2c3d4",
+  "status": "completed",
+  "rowCount": 100,
+  "columns": [
+    {
+      "name": "PORTFOLIO_ID",
+      "type": "VARCHAR"
+    }
+  ],
+  "rows": [
+    []
+  ]
+}

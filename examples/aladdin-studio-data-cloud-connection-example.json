@@ -1,0 +1,7 @@
+{
+  "connectionId": "adc-conn-001",
+  "accountName": "blackrock.snowflakecomputing.com",
+  "database": "ALADDIN_DATA_CLOUD",
+  "warehouse": "ANALYTICS_WH",
+  "status": "active"
+}

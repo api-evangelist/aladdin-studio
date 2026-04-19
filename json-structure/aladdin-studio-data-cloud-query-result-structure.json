@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-data-cloud-query-result-structure.json",
+  "name": "QueryResult",
+  "type": "object",
+  "description": "Results from an Aladdin Data Cloud query execution",
+  "properties": {
+    "queryId": {
+      "type": "string",
+      "description": "Unique query execution identifier",
+      "example": "qry-a1b2c3d4"
+    },
+    "status": {
+      "type": "string",
+      "description": "Query execution status",
+      "enum": [
+        "completed",
+        "running",
+        "failed"
+      ],
+      "example": "completed"
+    },
+    "rowCount": {
+      "type": "int32",
+      "description": "Number of rows returned",
+      "example": 100
+    },
+    "columns": {
+      "type": "array",
+      "description": "Column definitions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "PORTFOLIO_ID"
+          },
+          "type": {
+            "type": "string",
+            "example": "VARCHAR"
+          }
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "description": "Result rows as arrays",
+      "items": {
+        "type": "array",
+        "items": {}
+      }
+    }
+  }
+}

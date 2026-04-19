@@ -1,0 +1,9 @@
+{
+  "portfolioId": "PF-123456",
+  "fromDate": "2026-01-01",
+  "toDate": "2026-04-19",
+  "totalReturn": 0.0485,
+  "excessReturn": 0.0132,
+  "informationRatio": 0.85,
+  "sharpeRatio": 1.24
+}

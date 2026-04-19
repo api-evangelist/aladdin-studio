@@ -1,0 +1,10 @@
+{
+  "portfolioId": "PF-123456",
+  "name": "Global Equity Fund",
+  "currency": "USD",
+  "status": "active",
+  "benchmarkId": "MSCI-WORLD",
+  "inceptionDate": "2020-01-15",
+  "assetClass": "Equity",
+  "strategy": "Long Only"
+}

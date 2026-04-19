@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-graph-security-schema.json",
+  "title": "Security",
+  "description": "Security reference data from Aladdin",
+  "type": "object",
+  "properties": {
+    "securityId": {
+      "type": "string",
+      "description": "Internal Aladdin security identifier",
+      "example": "US0378331005"
+    },
+    "name": {
+      "type": "string",
+      "description": "Security full name",
+      "example": "Apple Inc"
+    },
+    "ticker": {
+      "type": "string",
+      "description": "Exchange ticker symbol",
+      "example": "AAPL"
+    },
+    "isin": {
+      "type": "string",
+      "description": "ISIN identifier",
+      "example": "US0378331005"
+    },
+    "cusip": {
+      "type": "string",
+      "description": "CUSIP identifier",
+      "example": 37833100
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Asset class classification",
+      "example": "Equity"
+    },
+    "sector": {
+      "type": "string",
+      "description": "GICS sector",
+      "example": "Technology"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country of domicile ISO code",
+      "example": "US"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Trading currency ISO code",
+      "example": "USD"
+    },
+    "exchange": {
+      "type": "string",
+      "description": "Primary exchange",
+      "example": "NASDAQ"
+    }
+  }
+}

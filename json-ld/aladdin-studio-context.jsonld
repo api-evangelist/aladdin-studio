@@ -1,0 +1,322 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aladdin": "https://blackrock.com/aladdin/schema/",
+    "schema": {
+      "@id": "aladdin:schema",
+      "@type": "xsd:string"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Security": "aladdin:Security",
+    "SecurityResearch": "aladdin:SecurityResearch",
+    "Order": "aladdin:Order",
+    "Dataset": "aladdin:Dataset",
+    "PortfolioRisk": "aladdin:PortfolioRisk",
+    "OrderList": "aladdin:OrderList",
+    "OrderRequest": "aladdin:OrderRequest",
+    "PortfolioAnalytics": "aladdin:PortfolioAnalytics",
+    "QueryRequest": "aladdin:QueryRequest",
+    "Position": "aladdin:Position",
+    "PositionList": "aladdin:PositionList",
+    "QueryResult": "aladdin:QueryResult",
+    "Portfolio": "aladdin:Portfolio",
+    "FactorExposure": "aladdin:FactorExposure",
+    "ConnectionList": "aladdin:ConnectionList",
+    "PortfolioList": "aladdin:PortfolioList",
+    "DatasetList": "aladdin:DatasetList",
+    "Connection": "aladdin:Connection",
+    "accountName": {
+      "@id": "aladdin:accountName",
+      "@type": "xsd:string"
+    },
+    "analystCount": {
+      "@id": "aladdin:analystCount",
+      "@type": "xsd:integer"
+    },
+    "asOfDate": {
+      "@id": "aladdin:asOfDate",
+      "@type": "xsd:date"
+    },
+    "assetClass": {
+      "@id": "aladdin:assetClass",
+      "@type": "xsd:string"
+    },
+    "averagePrice": {
+      "@id": "aladdin:averagePrice",
+      "@type": "xsd:decimal"
+    },
+    "benchmarkId": {
+      "@id": "aladdin:benchmarkId",
+      "@type": "xsd:string"
+    },
+    "beta": {
+      "@id": "aladdin:beta",
+      "@type": "xsd:decimal"
+    },
+    "columns": {
+      "@id": "aladdin:columns",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectionId": {
+      "@id": "aladdin:connectionId",
+      "@type": "xsd:string"
+    },
+    "connections": {
+      "@id": "aladdin:connections",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "consensusDate": {
+      "@id": "aladdin:consensusDate",
+      "@type": "xsd:date"
+    },
+    "contribution": {
+      "@id": "aladdin:contribution",
+      "@type": "xsd:decimal"
+    },
+    "country": {
+      "@id": "aladdin:country",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "aladdin:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "currency": {
+      "@id": "aladdin:currency",
+      "@type": "xsd:string"
+    },
+    "cusip": {
+      "@id": "aladdin:cusip",
+      "@type": "xsd:string"
+    },
+    "database": {
+      "@id": "aladdin:database",
+      "@type": "xsd:string"
+    },
+    "datasetId": {
+      "@id": "aladdin:datasetId",
+      "@type": "xsd:string"
+    },
+    "datasets": {
+      "@id": "aladdin:datasets",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "excessReturn": {
+      "@id": "aladdin:excessReturn",
+      "@type": "xsd:decimal"
+    },
+    "exchange": {
+      "@id": "aladdin:exchange",
+      "@type": "xsd:string"
+    },
+    "exposure": {
+      "@id": "aladdin:exposure",
+      "@type": "xsd:decimal"
+    },
+    "factorExposures": {
+      "@id": "aladdin:factorExposures",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "factorName": {
+      "@id": "aladdin:factorName",
+      "@type": "xsd:string"
+    },
+    "filledAt": {
+      "@id": "aladdin:filledAt",
+      "@type": "xsd:dateTime"
+    },
+    "filledQuantity": {
+      "@id": "aladdin:filledQuantity",
+      "@type": "xsd:decimal"
+    },
+    "fromDate": {
+      "@id": "aladdin:fromDate",
+      "@type": "xsd:date"
+    },
+    "inceptionDate": {
+      "@id": "aladdin:inceptionDate",
+      "@type": "xsd:date"
+    },
+    "informationRatio": {
+      "@id": "aladdin:informationRatio",
+      "@type": "xsd:decimal"
+    },
+    "isin": {
+      "@id": "aladdin:isin",
+      "@type": "xsd:string"
+    },
+    "lastUpdated": {
+      "@id": "aladdin:lastUpdated",
+      "@type": "xsd:dateTime"
+    },
+    "limitPrice": {
+      "@id": "aladdin:limitPrice",
+      "@type": "xsd:decimal"
+    },
+    "marketValue": {
+      "@id": "aladdin:marketValue",
+      "@type": "xsd:decimal"
+    },
+    "maxRows": {
+      "@id": "aladdin:maxRows",
+      "@type": "xsd:integer"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "orderId": {
+      "@id": "aladdin:orderId",
+      "@type": "xsd:string"
+    },
+    "orderType": {
+      "@id": "aladdin:orderType",
+      "@type": "xsd:string"
+    },
+    "orders": {
+      "@id": "aladdin:orders",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "page": {
+      "@id": "aladdin:page",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "aladdin:pageSize",
+      "@type": "xsd:integer"
+    },
+    "portfolioId": {
+      "@id": "aladdin:portfolioId",
+      "@type": "xsd:string"
+    },
+    "portfolios": {
+      "@id": "aladdin:portfolios",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "positions": {
+      "@id": "aladdin:positions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "priceTarget": {
+      "@id": "aladdin:priceTarget",
+      "@type": "xsd:decimal"
+    },
+    "quantity": {
+      "@id": "aladdin:quantity",
+      "@type": "xsd:decimal"
+    },
+    "queryId": {
+      "@id": "aladdin:queryId",
+      "@type": "xsd:string"
+    },
+    "rating": {
+      "@id": "aladdin:rating",
+      "@type": "xsd:string"
+    },
+    "riskModel": {
+      "@id": "aladdin:riskModel",
+      "@type": "xsd:string"
+    },
+    "rowCount": {
+      "@id": "aladdin:rowCount",
+      "@type": "xsd:integer"
+    },
+    "rows": {
+      "@id": "aladdin:rows",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "sector": {
+      "@id": "aladdin:sector",
+      "@type": "xsd:string"
+    },
+    "securityId": {
+      "@id": "aladdin:securityId",
+      "@type": "xsd:string"
+    },
+    "securityName": {
+      "@id": "aladdin:securityName",
+      "@type": "xsd:string"
+    },
+    "sharpeRatio": {
+      "@id": "aladdin:sharpeRatio",
+      "@type": "xsd:decimal"
+    },
+    "side": {
+      "@id": "aladdin:side",
+      "@type": "xsd:string"
+    },
+    "sql": {
+      "@id": "aladdin:sql",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "aladdin:status",
+      "@type": "xsd:string"
+    },
+    "strategy": {
+      "@id": "aladdin:strategy",
+      "@type": "xsd:string"
+    },
+    "ticker": {
+      "@id": "aladdin:ticker",
+      "@type": "xsd:string"
+    },
+    "timeout": {
+      "@id": "aladdin:timeout",
+      "@type": "xsd:integer"
+    },
+    "toDate": {
+      "@id": "aladdin:toDate",
+      "@type": "xsd:date"
+    },
+    "totalCount": {
+      "@id": "aladdin:totalCount",
+      "@type": "xsd:integer"
+    },
+    "totalMarketValue": {
+      "@id": "aladdin:totalMarketValue",
+      "@type": "xsd:decimal"
+    },
+    "totalReturn": {
+      "@id": "aladdin:totalReturn",
+      "@type": "xsd:decimal"
+    },
+    "trackingError": {
+      "@id": "aladdin:trackingError",
+      "@type": "xsd:decimal"
+    },
+    "type": {
+      "@id": "aladdin:type",
+      "@type": "xsd:string"
+    },
+    "var95": {
+      "@id": "aladdin:var95",
+      "@type": "xsd:decimal"
+    },
+    "volatility": {
+      "@id": "aladdin:volatility",
+      "@type": "xsd:decimal"
+    },
+    "warehouse": {
+      "@id": "aladdin:warehouse",
+      "@type": "xsd:string"
+    },
+    "weight": {
+      "@id": "aladdin:weight",
+      "@type": "xsd:decimal"
+    }
+  }
+}

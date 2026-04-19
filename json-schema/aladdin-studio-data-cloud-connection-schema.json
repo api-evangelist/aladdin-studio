@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-data-cloud-connection-schema.json",
+  "title": "Connection",
+  "description": "An Aladdin Data Cloud Snowflake connection",
+  "type": "object",
+  "properties": {
+    "connectionId": {
+      "type": "string",
+      "description": "Unique connection identifier",
+      "example": "adc-conn-001"
+    },
+    "accountName": {
+      "type": "string",
+      "description": "Snowflake account URL",
+      "example": "blackrock.snowflakecomputing.com"
+    },
+    "database": {
+      "type": "string",
+      "description": "Snowflake database name",
+      "example": "ALADDIN_DATA_CLOUD"
+    },
+    "warehouse": {
+      "type": "string",
+      "description": "Snowflake virtual warehouse",
+      "example": "ANALYTICS_WH"
+    },
+    "status": {
+      "type": "string",
+      "description": "Connection status",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "example": "active"
+    }
+  }
+}

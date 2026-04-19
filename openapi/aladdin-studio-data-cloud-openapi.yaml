@@ -1,0 +1,326 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud API
+  description: >-
+    The Aladdin Data Cloud API provides access to Snowflake-based analytics
+    data warehousing for large-scale portfolio analytics and data science
+    workflows. Supports OAuth and Snowflake JWT authentication with both
+    standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+  - url: https://api.blackrock.com/adc/v1
+    description: Aladdin Data Cloud API server
+security:
+  - OAuth2: []
+  - SnowflakeJWT: []
+paths:
+  /connections:
+    get:
+      operationId: listConnections
+      summary: Aladdin Studio List Data Cloud Connections
+      description: >-
+        List available Aladdin Data Cloud connections for the authenticated
+        user including Snowflake account details and available schemas.
+      tags:
+        - Connections
+      responses:
+        '200':
+          description: List of available connections
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionList'
+              examples:
+                listConnections200Example:
+                  summary: Default listConnections 200 response
+                  x-microcks-default: true
+                  value:
+                    connections:
+                      - connectionId: adc-conn-001
+                        accountName: blackrock.snowflakecomputing.com
+                        database: ALADDIN_DATA_CLOUD
+                        warehouse: ANALYTICS_WH
+                        status: active
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /connections/{connectionId}/query:
+    post:
+      operationId: executeQuery
+      summary: Aladdin Studio Execute Data Cloud Query
+      description: >-
+        Execute a SQL query against the Aladdin Data Cloud Snowflake database
+        and return results. Supports pagination for large result sets.
+      tags:
+        - Queries
+      parameters:
+        - name: connectionId
+          in: path
+          required: true
+          description: Data Cloud connection identifier
+          schema:
+            type: string
+            example: adc-conn-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+            examples:
+              executeQueryRequestExample:
+                summary: Default executeQuery request
+                x-microcks-default: true
+                value:
+                  sql: "SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100"
+                  warehouse: ANALYTICS_WH
+                  timeout: 300
+      responses:
+        '200':
+          description: Query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+              examples:
+                executeQuery200Example:
+                  summary: Default executeQuery 200 response
+                  x-microcks-default: true
+                  value:
+                    queryId: qry-a1b2c3d4
+                    status: completed
+                    rowCount: 100
+                    columns:
+                      - name: PORTFOLIO_ID
+                        type: VARCHAR
+                      - name: SECURITY_ID
+                        type: VARCHAR
+                      - name: MARKET_VALUE
+                        type: FLOAT
+                    rows:
+                      - ["PF-123456", "US0378331005", 195000.0]
+        '202':
+          description: Query accepted, processing asynchronously
+        '400':
+          description: Invalid SQL query
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /connections/{connectionId}/datasets:
+    get:
+      operationId: listDatasets
+      summary: Aladdin Studio List Available Datasets
+      description: >-
+        List available datasets and tables in the Aladdin Data Cloud for the
+        given connection, including portfolio data, risk analytics, and
+        reference data tables.
+      tags:
+        - Datasets
+      parameters:
+        - name: connectionId
+          in: path
+          required: true
+          description: Data Cloud connection identifier
+          schema:
+            type: string
+            example: adc-conn-001
+        - name: schema
+          in: query
+          description: Snowflake schema to filter datasets
+          schema:
+            type: string
+            example: PORTFOLIO
+      responses:
+        '200':
+          description: Available datasets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetList'
+              examples:
+                listDatasets200Example:
+                  summary: Default listDatasets 200 response
+                  x-microcks-default: true
+                  value:
+                    datasets:
+                      - datasetId: PORTFOLIO.HOLDINGS
+                        name: Portfolio Holdings
+                        schema: PORTFOLIO
+                        description: Daily portfolio positions and holdings
+                        lastUpdated: "2026-04-19T00:00:00Z"
+                      - datasetId: RISK.FACTOR_EXPOSURES
+                        name: Factor Exposures
+                        schema: RISK
+                        description: Risk factor exposure data by portfolio
+                        lastUpdated: "2026-04-19T06:00:00Z"
+        '404':
+          description: Connection not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT
+  schemas:
+    Connection:
+      title: Connection
+      type: object
+      description: An Aladdin Data Cloud Snowflake connection
+      properties:
+        connectionId:
+          type: string
+          description: Unique connection identifier
+          example: adc-conn-001
+        accountName:
+          type: string
+          description: Snowflake account URL
+          example: blackrock.snowflakecomputing.com
+        database:
+          type: string
+          description: Snowflake database name
+          example: ALADDIN_DATA_CLOUD
+        warehouse:
+          type: string
+          description: Snowflake virtual warehouse
+          example: ANALYTICS_WH
+        status:
+          type: string
+          description: Connection status
+          enum:
+            - active
+            - inactive
+          example: active
+    ConnectionList:
+      title: ConnectionList
+      type: object
+      description: List of available Data Cloud connections
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+    QueryRequest:
+      title: QueryRequest
+      type: object
+      description: SQL query request for the Aladdin Data Cloud
+      required:
+        - sql
+      properties:
+        sql:
+          type: string
+          description: SQL query to execute against the Aladdin Data Cloud
+          example: "SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100"
+        warehouse:
+          type: string
+          description: Snowflake virtual warehouse to use
+          example: ANALYTICS_WH
+        timeout:
+          type: integer
+          description: Query timeout in seconds
+          example: 300
+        maxRows:
+          type: integer
+          description: Maximum number of rows to return
+          example: 10000
+    QueryResult:
+      title: QueryResult
+      type: object
+      description: Results from an Aladdin Data Cloud query execution
+      properties:
+        queryId:
+          type: string
+          description: Unique query execution identifier
+          example: qry-a1b2c3d4
+        status:
+          type: string
+          description: Query execution status
+          enum:
+            - completed
+            - running
+            - failed
+          example: completed
+        rowCount:
+          type: integer
+          description: Number of rows returned
+          example: 100
+        columns:
+          type: array
+          description: Column definitions
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: PORTFOLIO_ID
+              type:
+                type: string
+                example: VARCHAR
+        rows:
+          type: array
+          description: Result rows as arrays
+          items:
+            type: array
+            items: {}
+    Dataset:
+      title: Dataset
+      type: object
+      description: An available dataset in the Aladdin Data Cloud
+      properties:
+        datasetId:
+          type: string
+          description: Unique dataset identifier (schema.table)
+          example: PORTFOLIO.HOLDINGS
+        name:
+          type: string
+          description: Dataset display name
+          example: Portfolio Holdings
+        schema:
+          type: string
+          description: Snowflake schema
+          example: PORTFOLIO
+        description:
+          type: string
+          description: Dataset description
+          example: Daily portfolio positions and holdings
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Last update timestamp
+          example: "2026-04-19T00:00:00Z"
+    DatasetList:
+      title: DatasetList
+      type: object
+      description: List of available datasets in the Data Cloud
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+tags:
+  - name: Connections
+    description: Aladdin Data Cloud Snowflake connection management
+  - name: Queries
+    description: SQL query execution against Data Cloud datasets
+  - name: Datasets
+    description: Available dataset and table discovery

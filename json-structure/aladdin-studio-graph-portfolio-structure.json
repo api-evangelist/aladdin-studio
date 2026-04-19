@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-structure/aladdin-studio-graph-portfolio-structure.json",
+  "name": "Portfolio",
+  "type": "object",
+  "description": "An Aladdin portfolio with associated metadata",
+  "properties": {
+    "portfolioId": {
+      "type": "string",
+      "description": "Unique portfolio identifier",
+      "example": "PF-123456"
+    },
+    "name": {
+      "type": "string",
+      "description": "Portfolio display name",
+      "example": "Global Equity Fund"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Base currency ISO code",
+      "example": "USD"
+    },
+    "status": {
+      "type": "string",
+      "description": "Portfolio status",
+      "enum": [
+        "active",
+        "inactive",
+        "pending"
+      ],
+      "example": "active"
+    },
+    "benchmarkId": {
+      "type": "string",
+      "description": "Benchmark identifier",
+      "example": "MSCI-WORLD"
+    },
+    "inceptionDate": {
+      "type": "date",
+      "description": "Portfolio inception date",
+      "example": "2020-01-15"
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Primary asset class",
+      "example": "Equity"
+    },
+    "strategy": {
+      "type": "string",
+      "description": "Investment strategy",
+      "example": "Long Only"
+    }
+  }
+}

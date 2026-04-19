@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-trading-order-list-schema.json",
+  "title": "OrderList",
+  "description": "Paginated list of trading orders",
+  "type": "object",
+  "properties": {
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of orders",
+      "example": 42
+    }
+  }
+}

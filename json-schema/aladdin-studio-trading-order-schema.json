@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/json-schema/aladdin-studio-trading-order-schema.json",
+  "title": "Order",
+  "description": "A trading order in the Aladdin system",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Unique order identifier",
+      "example": "ORD-987654"
+    },
+    "portfolioId": {
+      "type": "string",
+      "description": "Portfolio identifier",
+      "example": "PF-123456"
+    },
+    "securityId": {
+      "type": "string",
+      "description": "Security identifier",
+      "example": "US0378331005"
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side",
+      "enum": [
+        "buy",
+        "sell"
+      ],
+      "example": "buy"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Order quantity in shares or units",
+      "example": 100
+    },
+    "filledQuantity": {
+      "type": "number",
+      "description": "Quantity filled",
+      "example": 100
+    },
+    "averagePrice": {
+      "type": "number",
+      "description": "Average execution price",
+      "example": 195.0
+    },
+    "status": {
+      "type": "string",
+      "description": "Order status",
+      "enum": [
+        "pending",
+        "filled",
+        "partially_filled",
+        "cancelled"
+      ],
+      "example": "filled"
+    },
+    "orderType": {
+      "type": "string",
+      "description": "Order type",
+      "enum": [
+        "market",
+        "limit",
+        "stop"
+      ],
+      "example": "market"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order creation timestamp",
+      "example": "2026-04-19T10:30:00Z"
+    },
+    "filledAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order fill timestamp",
+      "example": "2026-04-19T10:31:05Z"
+    }
+  }
+}
