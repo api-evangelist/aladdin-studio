@@ -1,0 +1,174 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aladdin Trading API — Orders
+  description: 'Aladdin Trading API — Orders. 3 operations. Lead operation: Aladdin Studio List Orders. Self-contained Naftiko
+    capability covering one Aladdin Studio business surface.'
+  tags:
+  - Aladdin Studio
+  - Orders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ALADDIN_STUDIO_API_KEY: ALADDIN_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trading-orders
+    baseUri: https://api.blackrock.com/trading/v1
+    description: Aladdin Trading API — Orders business capability. Self-contained, no shared references.
+    resources:
+    - name: orders
+      path: /orders
+      operations:
+      - name: listorders
+        method: GET
+        description: Aladdin Studio List Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: portfolioId
+          in: query
+          type: string
+          description: Filter orders by portfolio
+        - name: status
+          in: query
+          type: string
+          description: Filter by order status
+        - name: fromDate
+          in: query
+          type: string
+          description: Start date filter (YYYY-MM-DD)
+        - name: toDate
+          in: query
+          type: string
+          description: End date filter (YYYY-MM-DD)
+      - name: createorder
+        method: POST
+        description: Aladdin Studio Create Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: orders-orderId
+      path: /orders/{orderId}
+      operations:
+      - name: getorder
+        method: GET
+        description: Aladdin Studio Get Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          description: Unique order identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ALADDIN_STUDIO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: trading-orders-rest
+    port: 8080
+    description: REST adapter for Aladdin Trading API — Orders. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/orders
+      name: orders
+      description: REST surface for orders.
+      operations:
+      - method: GET
+        name: listorders
+        description: Aladdin Studio List Orders
+        call: trading-orders.listorders
+        with:
+          portfolioId: rest.portfolioId
+          status: rest.status
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorder
+        description: Aladdin Studio Create Order
+        call: trading-orders.createorder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}
+      name: orders-orderid
+      description: REST surface for orders-orderId.
+      operations:
+      - method: GET
+        name: getorder
+        description: Aladdin Studio Get Order
+        call: trading-orders.getorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trading-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aladdin Trading API — Orders. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: aladdin-studio-list-orders
+      description: Aladdin Studio List Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trading-orders.listorders
+      with:
+        portfolioId: tools.portfolioId
+        status: tools.status
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aladdin-studio-create-order
+      description: Aladdin Studio Create Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trading-orders.createorder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aladdin-studio-get-order
+      description: Aladdin Studio Get Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trading-orders.getorder
+      with:
+        orderId: tools.orderId
+      outputParameters:
+      - type: object
+        mapping: $.

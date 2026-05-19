@@ -1,0 +1,92 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aladdin Investment Research API — Analytics
+  description: 'Aladdin Investment Research API — Analytics. 1 operations. Lead operation: Aladdin Studio Get Portfolio Analytics.
+    Self-contained Naftiko capability covering one Aladdin Studio business surface.'
+  tags:
+  - Aladdin Studio
+  - Analytics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ALADDIN_STUDIO_API_KEY: ALADDIN_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: investment-research-analytics
+    baseUri: https://api.blackrock.com/research/v1
+    description: Aladdin Investment Research API — Analytics business capability. Self-contained, no shared references.
+    resources:
+    - name: portfolios-portfolioId-analytics
+      path: /portfolios/{portfolioId}/analytics
+      operations:
+      - name: getportfolioanalytics
+        method: GET
+        description: Aladdin Studio Get Portfolio Analytics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: portfolioId
+          in: path
+          type: string
+          description: Portfolio identifier
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: Start date for analytics period (YYYY-MM-DD)
+        - name: toDate
+          in: query
+          type: string
+          description: End date for analytics period (YYYY-MM-DD)
+    authentication:
+      type: bearer
+      token: '{{env.ALADDIN_STUDIO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: investment-research-analytics-rest
+    port: 8080
+    description: REST adapter for Aladdin Investment Research API — Analytics. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/portfolios/{portfolioid}/analytics
+      name: portfolios-portfolioid-analytics
+      description: REST surface for portfolios-portfolioId-analytics.
+      operations:
+      - method: GET
+        name: getportfolioanalytics
+        description: Aladdin Studio Get Portfolio Analytics
+        call: investment-research-analytics.getportfolioanalytics
+        with:
+          portfolioId: rest.portfolioId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: investment-research-analytics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aladdin Investment Research API — Analytics. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: aladdin-studio-get-portfolio-analytics
+      description: Aladdin Studio Get Portfolio Analytics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: investment-research-analytics.getportfolioanalytics
+      with:
+        portfolioId: tools.portfolioId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      outputParameters:
+      - type: object
+        mapping: $.

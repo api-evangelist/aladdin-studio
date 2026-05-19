@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aladdin Graph API — Securities
+  description: 'Aladdin Graph API — Securities. 1 operations. Lead operation: Aladdin Studio Get Security. Self-contained
+    Naftiko capability covering one Aladdin Studio business surface.'
+  tags:
+  - Aladdin Studio
+  - Securities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ALADDIN_STUDIO_API_KEY: ALADDIN_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-securities
+    baseUri: https://api.blackrock.com/v1
+    description: Aladdin Graph API — Securities business capability. Self-contained, no shared references.
+    resources:
+    - name: securities-securityId
+      path: /securities/{securityId}
+      operations:
+      - name: getsecurity
+        method: GET
+        description: Aladdin Studio Get Security
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: securityId
+          in: path
+          type: string
+          description: Security identifier (ISIN, CUSIP, SEDOL, or internal ID)
+          required: true
+        - name: idType
+          in: query
+          type: string
+          description: Type of security identifier provided
+    authentication:
+      type: bearer
+      token: '{{env.ALADDIN_STUDIO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-securities-rest
+    port: 8080
+    description: REST adapter for Aladdin Graph API — Securities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/securities/{securityid}
+      name: securities-securityid
+      description: REST surface for securities-securityId.
+      operations:
+      - method: GET
+        name: getsecurity
+        description: Aladdin Studio Get Security
+        call: graph-securities.getsecurity
+        with:
+          securityId: rest.securityId
+          idType: rest.idType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-securities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aladdin Graph API — Securities. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: aladdin-studio-get-security
+      description: Aladdin Studio Get Security
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-securities.getsecurity
+      with:
+        securityId: tools.securityId
+        idType: tools.idType
+      outputParameters:
+      - type: object
+        mapping: $.

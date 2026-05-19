@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aladdin Investment Research API — Research
+  description: 'Aladdin Investment Research API — Research. 1 operations. Lead operation: Aladdin Studio Get Security Research.
+    Self-contained Naftiko capability covering one Aladdin Studio business surface.'
+  tags:
+  - Aladdin Studio
+  - Research
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ALADDIN_STUDIO_API_KEY: ALADDIN_STUDIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: investment-research-research
+    baseUri: https://api.blackrock.com/research/v1
+    description: Aladdin Investment Research API — Research business capability. Self-contained, no shared references.
+    resources:
+    - name: securities-securityId-research
+      path: /securities/{securityId}/research
+      operations:
+      - name: getsecurityresearch
+        method: GET
+        description: Aladdin Studio Get Security Research
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: securityId
+          in: path
+          type: string
+          description: Security identifier (ISIN or internal ID)
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ALADDIN_STUDIO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: investment-research-research-rest
+    port: 8080
+    description: REST adapter for Aladdin Investment Research API — Research. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/securities/{securityid}/research
+      name: securities-securityid-research
+      description: REST surface for securities-securityId-research.
+      operations:
+      - method: GET
+        name: getsecurityresearch
+        description: Aladdin Studio Get Security Research
+        call: investment-research-research.getsecurityresearch
+        with:
+          securityId: rest.securityId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: investment-research-research-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aladdin Investment Research API — Research. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: aladdin-studio-get-security-research
+      description: Aladdin Studio Get Security Research
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: investment-research-research.getsecurityresearch
+      with:
+        securityId: tools.securityId
+      outputParameters:
+      - type: object
+        mapping: $.
