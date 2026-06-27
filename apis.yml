@@ -55,20 +55,20 @@ apis:
   - url: json-structure/aladdin-studio-graph-security-structure.json
     type: JSONStructure
   - url: examples/aladdin-studio-graph-portfolio-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-graph-position-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-graph-portfolio-risk-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-graph-security-example.json
-    type: Example
-  - type: NaftikoCapability
+    type: Examples
+  - type: X-NaftikoCapability
     url: capabilities/graph-portfolios.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/graph-positions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/graph-risk.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/graph-securities.yaml
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/v1
@@ -100,16 +100,16 @@ apis:
   - url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
     type: JSONStructure
   - url: examples/aladdin-studio-data-cloud-connection-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-data-cloud-query-result-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-data-cloud-dataset-example.json
-    type: Example
-  - type: NaftikoCapability
+    type: Examples
+  - type: X-NaftikoCapability
     url: capabilities/data-cloud-connections.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/data-cloud-datasets.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/data-cloud-queries.yaml
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/adc/v1
@@ -127,7 +127,7 @@ apis:
   - url: openapi/aladdin-studio-trading-openapi.yaml
     type: OpenAPI
   - url: https://pypi.org/project/asdk-plugin-trading/
-    type: SDK
+    type: SDKs
     title: Python Trading Plugin
   - url: json-schema/aladdin-studio-trading-order-schema.json
     type: JSONSchema
@@ -136,8 +136,8 @@ apis:
   - url: json-structure/aladdin-studio-trading-order-structure.json
     type: JSONStructure
   - url: examples/aladdin-studio-trading-order-example.json
-    type: Example
-  - type: NaftikoCapability
+    type: Examples
+  - type: X-NaftikoCapability
     url: capabilities/trading-orders.yaml
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/trading/v1
@@ -155,7 +155,7 @@ apis:
   - url: openapi/aladdin-studio-investment-research-openapi.yaml
     type: OpenAPI
   - url: https://pypi.org/project/asdk-plugin-investment-research/
-    type: SDK
+    type: SDKs
     title: Python Investment Research Plugin
   - url: json-schema/aladdin-studio-investment-research-security-research-schema.json
     type: JSONSchema
@@ -166,12 +166,12 @@ apis:
   - url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
     type: JSONStructure
   - url: examples/aladdin-studio-investment-research-security-research-example.json
-    type: Example
+    type: Examples
   - url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-    type: Example
-  - type: NaftikoCapability
+    type: Examples
+  - type: X-NaftikoCapability
     url: capabilities/investment-research-analytics.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/investment-research-research.yaml
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/research/v1
@@ -187,13 +187,13 @@ common:
 - url: https://github.com/blackrock
   type: GitHubOrganization
 - url: https://github.com/blackrock/aladdinsdk
-  type: SDK
+  type: SDKs
   title: Python SDK (AladdinSDK)
 - url: https://pypi.org/project/aladdinsdk/
-  type: SDK
+  type: SDKs
   title: Python SDK (PyPI)
 - url: https://github.com/blackrock/aladdinsdk-plugin-builder
-  type: SDK
+  type: SDKs
   title: Plugin Builder
 - url: rules/aladdin-studio-spectral-rules.yml
   type: SpectralRules
