@@ -178,6 +178,8 @@ apis:
   description: The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics
     built on Aladdin's data infrastructure. Available as the asdk_plugin_investment_research Python package.
 common:
+- type: OAuthScopes
+  url: scopes/aladdin-studio-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/showcase/aladdinbyblackrock
 - url: https://www.blackrock.com/aladdin/products/apis

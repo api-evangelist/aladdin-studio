@@ -1,0 +1,79 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/aladdin-studio-data-cloud-openapi.yaml, openapi/aladdin-studio-graph-openapi.yaml,
+  openapi/aladdin-studio-investment-research-openapi.yaml, openapi/aladdin-studio-trading-openapi.yaml
+schemes:
+- name: OAuth2
+  source: openapi/aladdin-studio-data-cloud-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+  description: OAuth 2.0 with access tokens for Data Cloud authentication
+- name: OAuth2
+  source: openapi/aladdin-studio-graph-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+  - flow: authorizationCode
+    authorizationUrl: https://api.blackrock.com/oauth/authorize
+    tokenUrl: https://api.blackrock.com/oauth/token
+  description: OAuth 2.0 authentication supporting client_credentials and refresh_token flows
+- name: OAuth2
+  source: openapi/aladdin-studio-investment-research-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+  description: OAuth 2.0 authentication for research data access
+- name: OAuth2
+  source: openapi/aladdin-studio-trading-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+  description: OAuth 2.0 authentication for trading operations
+scopes:
+- scope: adc:read
+  description: Read Data Cloud data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-data-cloud-openapi.yaml
+- scope: analytics:read
+  description: Read analytics data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-investment-research-openapi.yaml
+- scope: portfolio:read
+  description: Read portfolio data
+  flows:
+  - authorizationCode
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml
+- scope: research:read
+  description: Read research data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-investment-research-openapi.yaml
+- scope: risk:read
+  description: Read risk analytics
+  flows:
+  - authorizationCode
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml
+- scope: trading:read
+  description: Read trading data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml
+  - openapi/aladdin-studio-trading-openapi.yaml
+- scope: trading:write
+  description: Create and manage orders
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml
+  - openapi/aladdin-studio-trading-openapi.yaml
