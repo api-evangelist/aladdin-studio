@@ -1,0 +1,49 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/aladdin-studio-data-cloud-openapi.yaml, openapi/aladdin-studio-graph-openapi.yaml,
+  openapi/aladdin-studio-investment-research-openapi.yaml, openapi/aladdin-studio-trading-openapi.yaml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+    scopes: 1
+  description: OAuth 2.0 with access tokens for Data Cloud authentication
+  sources:
+  - openapi/aladdin-studio-data-cloud-openapi.yaml
+  - openapi/aladdin-studio-investment-research-openapi.yaml
+  - openapi/aladdin-studio-trading-openapi.yaml
+- name: SnowflakeJWT
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+  sources:
+  - openapi/aladdin-studio-data-cloud-openapi.yaml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.blackrock.com/oauth/token
+    scopes: 4
+  - flow: authorizationCode
+    authorizationUrl: https://api.blackrock.com/oauth/authorize
+    tokenUrl: https://api.blackrock.com/oauth/token
+    scopes: 2
+  description: OAuth 2.0 authentication supporting client_credentials and refresh_token flows
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: Basic authentication using API token and user credentials
+  sources:
+  - openapi/aladdin-studio-graph-openapi.yaml

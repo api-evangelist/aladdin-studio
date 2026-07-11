@@ -178,6 +178,10 @@ apis:
   description: The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics
     built on Aladdin's data infrastructure. Available as the asdk_plugin_investment_research Python package.
 common:
+- type: DomainSecurity
+  url: security/aladdin-studio-domain-security.yml
+- type: Authentication
+  url: authentication/aladdin-studio-authentication.yml
 - type: OAuthScopes
   url: scopes/aladdin-studio-scopes.yml
 - type: LinkedIn
