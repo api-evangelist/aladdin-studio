@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Research API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Research
+  description: Investment research data and analyst ratings
+paths:
+  /securities/{securityId}/research:
+    get:
+      operationId: getSecurityResearch
+      summary: Aladdin Studio Get Security Research
+      description: Retrieve investment research data for a specific security including analyst ratings, price targets, and research notes.
+      tags:
+      - Research
+      parameters:
+      - name: securityId
+        in: path
+        required: true
+        description: Security identifier (ISIN or internal ID)
+        schema:
+          type: string
+          example: US0378331005
+      responses:
+        '200':
+          description: Security research data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityResearch'
+              examples:
+                getSecurityResearch200Example:
+                  summary: Default getSecurityResearch 200 response
+                  x-microcks-default: true
+                  value:
+                    securityId: US0378331005
+                    ticker: AAPL
+                    rating: buy
+                    priceTarget: 225.0
+                    analystCount: 42
+                    consensusDate: '2026-04-19'
+        '404':
+          description: Security not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SecurityResearch:
+      title: SecurityResearch
+      type: object
+      description: Investment research data for a security
+      properties:
+        securityId:
+          type: string
+          description: Security identifier
+          example: US0378331005
+        ticker:
+          type: string
+          description: Ticker symbol
+          example: AAPL
+        rating:
+          type: string
+          description: Analyst consensus rating
+          enum:
+          - buy
+          - hold
+          - sell
+          example: buy
+        priceTarget:
+          type: number
+          description: Consensus price target
+          example: 225.0
+        analystCount:
+          type: integer
+          description: Number of analysts covering the security
+          example: 42
+        consensusDate:
+          type: string
+          format: date
+          description: Date of consensus calculation
+          example: '2026-04-19'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

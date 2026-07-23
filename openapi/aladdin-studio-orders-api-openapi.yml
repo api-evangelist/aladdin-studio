@@ -1,10 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Aladdin Trading API
-  description: >-
-    The Aladdin Trading API enables order management and trading workflow
-    integration with BlackRock's Aladdin investment operating system.
-    Available via the asdk_plugin_trading Python package.
+  title: Aladdin Data Cloud Analytics Orders API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
   version: 1.0.0
   contact:
     name: Aladdin Studio
@@ -14,52 +11,54 @@ info:
     url: https://www.blackrock.com/aladdin/products/aladdin-studio
   x-generated-from: documentation
 servers:
-  - url: https://api.blackrock.com/trading/v1
-    description: Aladdin Trading API server
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
 security:
-  - OAuth2: []
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Orders
+  description: Trading order management and execution
 paths:
   /orders:
     get:
       operationId: listOrders
       summary: Aladdin Studio List Orders
-      description: >-
-        Retrieve a paginated list of trading orders with optional filtering
-        by portfolio, status, and date range.
+      description: Retrieve a paginated list of trading orders with optional filtering by portfolio, status, and date range.
       tags:
-        - Orders
+      - Orders
       parameters:
-        - name: portfolioId
-          in: query
-          description: Filter orders by portfolio
-          schema:
-            type: string
-            example: PF-123456
-        - name: status
-          in: query
-          description: Filter by order status
-          schema:
-            type: string
-            enum:
-              - pending
-              - filled
-              - partially_filled
-              - cancelled
-            example: pending
-        - name: fromDate
-          in: query
-          description: Start date filter (YYYY-MM-DD)
-          schema:
-            type: string
-            format: date
-            example: "2026-04-01"
-        - name: toDate
-          in: query
-          description: End date filter (YYYY-MM-DD)
-          schema:
-            type: string
-            format: date
-            example: "2026-04-19"
+      - name: portfolioId
+        in: query
+        description: Filter orders by portfolio
+        schema:
+          type: string
+          example: PF-123456
+      - name: status
+        in: query
+        description: Filter by order status
+        schema:
+          type: string
+          enum:
+          - pending
+          - filled
+          - partially_filled
+          - cancelled
+          example: pending
+      - name: fromDate
+        in: query
+        description: Start date filter (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+          example: '2026-04-01'
+      - name: toDate
+        in: query
+        description: End date filter (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+          example: '2026-04-19'
       responses:
         '200':
           description: List of orders
@@ -73,12 +72,12 @@ paths:
                   x-microcks-default: true
                   value:
                     orders:
-                      - orderId: ORD-987654
-                        portfolioId: PF-123456
-                        securityId: US0378331005
-                        side: buy
-                        quantity: 100
-                        status: pending
+                    - orderId: ORD-987654
+                      portfolioId: PF-123456
+                      securityId: US0378331005
+                      side: buy
+                      quantity: 100
+                      status: pending
                     totalCount: 1
         '401':
           description: Unauthorized
@@ -88,11 +87,9 @@ paths:
     post:
       operationId: createOrder
       summary: Aladdin Studio Create Order
-      description: >-
-        Create a new trading order for a portfolio security. Orders are
-        submitted to Aladdin's order management system for processing.
+      description: Create a new trading order for a portfolio security. Orders are submitted to Aladdin's order management system for processing.
       tags:
-        - Orders
+      - Orders
       requestBody:
         required: true
         content:
@@ -127,7 +124,7 @@ paths:
                     side: buy
                     quantity: 100
                     status: pending
-                    createdAt: "2026-04-19T10:30:00Z"
+                    createdAt: '2026-04-19T10:30:00Z'
         '400':
           description: Invalid order parameters
       x-microcks-operation:
@@ -139,15 +136,15 @@ paths:
       summary: Aladdin Studio Get Order
       description: Retrieve details for a specific trading order.
       tags:
-        - Orders
+      - Orders
       parameters:
-        - name: orderId
-          in: path
-          required: true
-          description: Unique order identifier
-          schema:
-            type: string
-            example: ORD-987654
+      - name: orderId
+        in: path
+        required: true
+        description: Unique order identifier
+        schema:
+          type: string
+          example: ORD-987654
       responses:
         '200':
           description: Order details
@@ -167,26 +164,57 @@ paths:
                     quantity: 100
                     filledQuantity: 100
                     status: filled
-                    averagePrice: 195.00
-                    createdAt: "2026-04-19T10:30:00Z"
-                    filledAt: "2026-04-19T10:31:05Z"
+                    averagePrice: 195.0
+                    createdAt: '2026-04-19T10:30:00Z'
+                    filledAt: '2026-04-19T10:31:05Z'
         '404':
           description: Order not found
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      description: OAuth 2.0 authentication for trading operations
-      flows:
-        clientCredentials:
-          tokenUrl: https://api.blackrock.com/oauth/token
-          scopes:
-            trading:read: Read trading data
-            trading:write: Create and manage orders
   schemas:
+    OrderRequest:
+      title: OrderRequest
+      type: object
+      description: Request body for creating a new trading order
+      required:
+      - portfolioId
+      - securityId
+      - side
+      - quantity
+      properties:
+        portfolioId:
+          type: string
+          description: Portfolio identifier
+          example: PF-123456
+        securityId:
+          type: string
+          description: Security identifier
+          example: US0378331005
+        side:
+          type: string
+          description: Order side
+          enum:
+          - buy
+          - sell
+          example: buy
+        quantity:
+          type: number
+          description: Order quantity
+          example: 100
+        orderType:
+          type: string
+          description: Order type
+          enum:
+          - market
+          - limit
+          - stop
+          example: market
+        limitPrice:
+          type: number
+          description: Limit price (required for limit orders)
+          example: 195.0
     Order:
       title: Order
       type: object
@@ -208,8 +236,8 @@ components:
           type: string
           description: Order side
           enum:
-            - buy
-            - sell
+          - buy
+          - sell
           example: buy
         quantity:
           type: number
@@ -222,34 +250,34 @@ components:
         averagePrice:
           type: number
           description: Average execution price
-          example: 195.00
+          example: 195.0
         status:
           type: string
           description: Order status
           enum:
-            - pending
-            - filled
-            - partially_filled
-            - cancelled
+          - pending
+          - filled
+          - partially_filled
+          - cancelled
           example: filled
         orderType:
           type: string
           description: Order type
           enum:
-            - market
-            - limit
-            - stop
+          - market
+          - limit
+          - stop
           example: market
         createdAt:
           type: string
           format: date-time
           description: Order creation timestamp
-          example: "2026-04-19T10:30:00Z"
+          example: '2026-04-19T10:30:00Z'
         filledAt:
           type: string
           format: date-time
           description: Order fill timestamp
-          example: "2026-04-19T10:31:05Z"
+          example: '2026-04-19T10:31:05Z'
     OrderList:
       title: OrderList
       type: object
@@ -263,47 +291,17 @@ components:
           type: integer
           description: Total number of orders
           example: 42
-    OrderRequest:
-      title: OrderRequest
-      type: object
-      description: Request body for creating a new trading order
-      required:
-        - portfolioId
-        - securityId
-        - side
-        - quantity
-      properties:
-        portfolioId:
-          type: string
-          description: Portfolio identifier
-          example: PF-123456
-        securityId:
-          type: string
-          description: Security identifier
-          example: US0378331005
-        side:
-          type: string
-          description: Order side
-          enum:
-            - buy
-            - sell
-          example: buy
-        quantity:
-          type: number
-          description: Order quantity
-          example: 100
-        orderType:
-          type: string
-          description: Order type
-          enum:
-            - market
-            - limit
-            - stop
-          example: market
-        limitPrice:
-          type: number
-          description: Limit price (required for limit orders)
-          example: 195.00
-tags:
-  - name: Orders
-    description: Trading order management and execution
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

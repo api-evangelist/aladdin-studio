@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Analytics
+  description: Portfolio performance and attribution analytics
+paths:
+  /portfolios/{portfolioId}/analytics:
+    get:
+      operationId: getPortfolioAnalytics
+      summary: Aladdin Studio Get Portfolio Analytics
+      description: Retrieve investment analytics for a portfolio including attribution, performance metrics, and factor analysis.
+      tags:
+      - Analytics
+      parameters:
+      - name: portfolioId
+        in: path
+        required: true
+        description: Portfolio identifier
+        schema:
+          type: string
+          example: PF-123456
+      - name: fromDate
+        in: query
+        description: Start date for analytics period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+          example: '2026-01-01'
+      - name: toDate
+        in: query
+        description: End date for analytics period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+          example: '2026-04-19'
+      responses:
+        '200':
+          description: Portfolio analytics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioAnalytics'
+              examples:
+                getPortfolioAnalytics200Example:
+                  summary: Default getPortfolioAnalytics 200 response
+                  x-microcks-default: true
+                  value:
+                    portfolioId: PF-123456
+                    fromDate: '2026-01-01'
+                    toDate: '2026-04-19'
+                    totalReturn: 0.0485
+                    excessReturn: 0.0132
+                    informationRatio: 0.85
+        '404':
+          description: Portfolio not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PortfolioAnalytics:
+      title: PortfolioAnalytics
+      type: object
+      description: Investment analytics and performance metrics for a portfolio
+      properties:
+        portfolioId:
+          type: string
+          description: Portfolio identifier
+          example: PF-123456
+        fromDate:
+          type: string
+          format: date
+          description: Analytics period start date
+          example: '2026-01-01'
+        toDate:
+          type: string
+          format: date
+          description: Analytics period end date
+          example: '2026-04-19'
+        totalReturn:
+          type: number
+          description: Total portfolio return for the period
+          example: 0.0485
+        excessReturn:
+          type: number
+          description: Excess return vs benchmark
+          example: 0.0132
+        informationRatio:
+          type: number
+          description: Information ratio for the period
+          example: 0.85
+        sharpeRatio:
+          type: number
+          description: Sharpe ratio for the period
+          example: 1.24
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

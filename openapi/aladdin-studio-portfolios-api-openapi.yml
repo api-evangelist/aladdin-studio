@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Portfolios API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Portfolios
+  description: Portfolio metadata and management operations
+paths:
+  /portfolios:
+    get:
+      operationId: listPortfolios
+      summary: Aladdin Studio List Portfolios
+      description: Retrieve a paginated list of portfolios accessible to the authenticated user. Returns portfolio metadata including identifiers, names, and classification attributes.
+      tags:
+      - Portfolios
+      parameters:
+      - name: page
+        in: query
+        description: Page number for pagination
+        schema:
+          type: integer
+          example: 1
+      - name: pageSize
+        in: query
+        description: Number of results per page
+        schema:
+          type: integer
+          example: 100
+      responses:
+        '200':
+          description: List of portfolios
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioList'
+              examples:
+                listPortfolios200Example:
+                  summary: Default listPortfolios 200 response
+                  x-microcks-default: true
+                  value:
+                    portfolios:
+                    - portfolioId: PF-123456
+                      name: Global Equity Fund
+                      currency: USD
+                      status: active
+                    totalCount: 1
+                    page: 1
+                    pageSize: 100
+        '401':
+          description: Unauthorized - invalid or missing authentication
+        '403':
+          description: Forbidden - insufficient permissions for this portfolio
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /portfolios/{portfolioId}:
+    get:
+      operationId: getPortfolio
+      summary: Aladdin Studio Get Portfolio
+      description: Retrieve detailed information about a specific portfolio including metadata, benchmark, currency, and classification attributes.
+      tags:
+      - Portfolios
+      parameters:
+      - name: portfolioId
+        in: path
+        required: true
+        description: Unique portfolio identifier
+        schema:
+          type: string
+          example: PF-123456
+      responses:
+        '200':
+          description: Portfolio details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+              examples:
+                getPortfolio200Example:
+                  summary: Default getPortfolio 200 response
+                  x-microcks-default: true
+                  value:
+                    portfolioId: PF-123456
+                    name: Global Equity Fund
+                    currency: USD
+                    status: active
+                    benchmarkId: MSCI-WORLD
+                    inceptionDate: '2020-01-15'
+        '404':
+          description: Portfolio not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PortfolioList:
+      title: PortfolioList
+      type: object
+      description: Paginated list of portfolios
+      properties:
+        portfolios:
+          type: array
+          description: Array of portfolio objects
+          items:
+            $ref: '#/components/schemas/Portfolio'
+        totalCount:
+          type: integer
+          description: Total number of portfolios
+          example: 125
+        page:
+          type: integer
+          description: Current page number
+          example: 1
+        pageSize:
+          type: integer
+          description: Number of results per page
+          example: 100
+    Portfolio:
+      title: Portfolio
+      type: object
+      description: An Aladdin portfolio with associated metadata
+      properties:
+        portfolioId:
+          type: string
+          description: Unique portfolio identifier
+          example: PF-123456
+        name:
+          type: string
+          description: Portfolio display name
+          example: Global Equity Fund
+        currency:
+          type: string
+          description: Base currency ISO code
+          example: USD
+        status:
+          type: string
+          description: Portfolio status
+          enum:
+          - active
+          - inactive
+          - pending
+          example: active
+        benchmarkId:
+          type: string
+          description: Benchmark identifier
+          example: MSCI-WORLD
+        inceptionDate:
+          type: string
+          format: date
+          description: Portfolio inception date
+          example: '2020-01-15'
+        assetClass:
+          type: string
+          description: Primary asset class
+          example: Equity
+        strategy:
+          type: string
+          description: Investment strategy
+          example: Long Only
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

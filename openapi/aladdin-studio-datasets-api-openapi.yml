@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Datasets API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Datasets
+  description: Available dataset and table discovery
+paths:
+  /connections/{connectionId}/datasets:
+    get:
+      operationId: listDatasets
+      summary: Aladdin Studio List Available Datasets
+      description: List available datasets and tables in the Aladdin Data Cloud for the given connection, including portfolio data, risk analytics, and reference data tables.
+      tags:
+      - Datasets
+      parameters:
+      - name: connectionId
+        in: path
+        required: true
+        description: Data Cloud connection identifier
+        schema:
+          type: string
+          example: adc-conn-001
+      - name: schema
+        in: query
+        description: Snowflake schema to filter datasets
+        schema:
+          type: string
+          example: PORTFOLIO
+      responses:
+        '200':
+          description: Available datasets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetList'
+              examples:
+                listDatasets200Example:
+                  summary: Default listDatasets 200 response
+                  x-microcks-default: true
+                  value:
+                    datasets:
+                    - datasetId: PORTFOLIO.HOLDINGS
+                      name: Portfolio Holdings
+                      schema: PORTFOLIO
+                      description: Daily portfolio positions and holdings
+                      lastUpdated: '2026-04-19T00:00:00Z'
+                    - datasetId: RISK.FACTOR_EXPOSURES
+                      name: Factor Exposures
+                      schema: RISK
+                      description: Risk factor exposure data by portfolio
+                      lastUpdated: '2026-04-19T06:00:00Z'
+        '404':
+          description: Connection not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Dataset:
+      title: Dataset
+      type: object
+      description: An available dataset in the Aladdin Data Cloud
+      properties:
+        datasetId:
+          type: string
+          description: Unique dataset identifier (schema.table)
+          example: PORTFOLIO.HOLDINGS
+        name:
+          type: string
+          description: Dataset display name
+          example: Portfolio Holdings
+        schema:
+          type: string
+          description: Snowflake schema
+          example: PORTFOLIO
+        description:
+          type: string
+          description: Dataset description
+          example: Daily portfolio positions and holdings
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Last update timestamp
+          example: '2026-04-19T00:00:00Z'
+    DatasetList:
+      title: DatasetList
+      type: object
+      description: List of available datasets in the Data Cloud
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

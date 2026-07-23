@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Securities API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Securities
+  description: Security reference data and classification
+paths:
+  /securities/{securityId}:
+    get:
+      operationId: getSecurity
+      summary: Aladdin Studio Get Security
+      description: Retrieve security reference data for a given identifier including name, asset class, sector, country, and other classification attributes.
+      tags:
+      - Securities
+      parameters:
+      - name: securityId
+        in: path
+        required: true
+        description: Security identifier (ISIN, CUSIP, SEDOL, or internal ID)
+        schema:
+          type: string
+          example: US0378331005
+      - name: idType
+        in: query
+        description: Type of security identifier provided
+        schema:
+          type: string
+          enum:
+          - ISIN
+          - CUSIP
+          - SEDOL
+          - INTERNAL
+          example: ISIN
+      responses:
+        '200':
+          description: Security reference data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Security'
+              examples:
+                getSecurity200Example:
+                  summary: Default getSecurity 200 response
+                  x-microcks-default: true
+                  value:
+                    securityId: US0378331005
+                    name: Apple Inc
+                    ticker: AAPL
+                    assetClass: Equity
+                    sector: Technology
+                    country: US
+                    currency: USD
+        '404':
+          description: Security not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Security:
+      title: Security
+      type: object
+      description: Security reference data from Aladdin
+      properties:
+        securityId:
+          type: string
+          description: Internal Aladdin security identifier
+          example: US0378331005
+        name:
+          type: string
+          description: Security full name
+          example: Apple Inc
+        ticker:
+          type: string
+          description: Exchange ticker symbol
+          example: AAPL
+        isin:
+          type: string
+          description: ISIN identifier
+          example: US0378331005
+        cusip:
+          type: string
+          description: CUSIP identifier
+          example: 037833100
+        assetClass:
+          type: string
+          description: Asset class classification
+          example: Equity
+        sector:
+          type: string
+          description: GICS sector
+          example: Technology
+        country:
+          type: string
+          description: Country of domicile ISO code
+          example: US
+        currency:
+          type: string
+          description: Trading currency ISO code
+          example: USD
+        exchange:
+          type: string
+          description: Primary exchange
+          example: NASDAQ
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

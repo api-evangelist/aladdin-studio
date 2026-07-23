@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Risk API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Risk
+  description: Risk analytics and factor exposure calculations
+paths:
+  /portfolios/{portfolioId}/risk:
+    get:
+      operationId: getPortfolioRisk
+      summary: Aladdin Studio Get Portfolio Risk Analytics
+      description: Retrieve risk analytics for a portfolio including factor exposures, tracking error, VaR, and contribution metrics computed by Aladdin's risk engine.
+      tags:
+      - Risk
+      parameters:
+      - name: portfolioId
+        in: path
+        required: true
+        description: Unique portfolio identifier
+        schema:
+          type: string
+          example: PF-123456
+      - name: asOfDate
+        in: query
+        description: Risk calculation date in YYYY-MM-DD format
+        schema:
+          type: string
+          format: date
+          example: '2026-04-19'
+      - name: model
+        in: query
+        description: Risk model to use for calculation
+        schema:
+          type: string
+          example: AXUS4
+      responses:
+        '200':
+          description: Portfolio risk analytics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioRisk'
+              examples:
+                getPortfolioRisk200Example:
+                  summary: Default getPortfolioRisk 200 response
+                  x-microcks-default: true
+                  value:
+                    portfolioId: PF-123456
+                    asOfDate: '2026-04-19'
+                    trackingError: 0.0342
+                    var95: -0.0285
+                    beta: 1.02
+                    factorExposures:
+                    - factorName: Market
+                      exposure: 1.02
+                    - factorName: Size
+                      exposure: -0.15
+        '404':
+          description: Portfolio not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PortfolioRisk:
+      title: PortfolioRisk
+      type: object
+      description: Risk analytics for a portfolio computed by Aladdin's risk engine
+      properties:
+        portfolioId:
+          type: string
+          description: Portfolio identifier
+          example: PF-123456
+        asOfDate:
+          type: string
+          format: date
+          description: Risk calculation date
+          example: '2026-04-19'
+        trackingError:
+          type: number
+          description: Annualized tracking error vs benchmark
+          example: 0.0342
+        var95:
+          type: number
+          description: 95% Value at Risk (1-day)
+          example: -0.0285
+        beta:
+          type: number
+          description: Portfolio beta vs benchmark
+          example: 1.02
+        volatility:
+          type: number
+          description: Annualized portfolio volatility
+          example: 0.152
+        factorExposures:
+          type: array
+          description: Factor exposure breakdown
+          items:
+            $ref: '#/components/schemas/FactorExposure'
+        riskModel:
+          type: string
+          description: Risk model used for calculation
+          example: AXUS4
+    FactorExposure:
+      title: FactorExposure
+      type: object
+      description: Risk factor exposure for a portfolio
+      properties:
+        factorName:
+          type: string
+          description: Risk factor name
+          example: Market
+        exposure:
+          type: number
+          description: Factor exposure value
+          example: 1.02
+        contribution:
+          type: number
+          description: Contribution to portfolio risk
+          example: 0.0285
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

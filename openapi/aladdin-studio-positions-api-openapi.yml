@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Positions API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Positions
+  description: Portfolio position and holdings data
+paths:
+  /portfolios/{portfolioId}/positions:
+    get:
+      operationId: getPortfolioPositions
+      summary: Aladdin Studio Get Portfolio Positions
+      description: Retrieve current positions for a portfolio including security identifiers, market values, quantities, and weights.
+      tags:
+      - Positions
+      parameters:
+      - name: portfolioId
+        in: path
+        required: true
+        description: Unique portfolio identifier
+        schema:
+          type: string
+          example: PF-123456
+      - name: asOfDate
+        in: query
+        description: Position date in YYYY-MM-DD format
+        schema:
+          type: string
+          format: date
+          example: '2026-04-19'
+      responses:
+        '200':
+          description: Portfolio positions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PositionList'
+              examples:
+                getPortfolioPositions200Example:
+                  summary: Default getPortfolioPositions 200 response
+                  x-microcks-default: true
+                  value:
+                    positions:
+                    - securityId: US0378331005
+                      securityName: Apple Inc
+                      quantity: 1000
+                      marketValue: 195000.0
+                      weight: 0.025
+                      currency: USD
+                    asOfDate: '2026-04-19'
+                    portfolioId: PF-123456
+        '404':
+          description: Portfolio not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Position:
+      title: Position
+      type: object
+      description: A security position within a portfolio
+      properties:
+        securityId:
+          type: string
+          description: Security identifier
+          example: US0378331005
+        securityName:
+          type: string
+          description: Security name
+          example: Apple Inc
+        quantity:
+          type: number
+          description: Number of shares or units held
+          example: 1000
+        marketValue:
+          type: number
+          description: Current market value in portfolio base currency
+          example: 195000.0
+        weight:
+          type: number
+          description: Portfolio weight as decimal
+          example: 0.025
+        currency:
+          type: string
+          description: Security trading currency
+          example: USD
+        assetClass:
+          type: string
+          description: Asset class classification
+          example: Equity
+        sector:
+          type: string
+          description: GICS sector
+          example: Technology
+    PositionList:
+      title: PositionList
+      type: object
+      description: List of portfolio positions as of a date
+      properties:
+        positions:
+          type: array
+          description: Array of position objects
+          items:
+            $ref: '#/components/schemas/Position'
+        portfolioId:
+          type: string
+          description: Portfolio identifier
+          example: PF-123456
+        asOfDate:
+          type: string
+          format: date
+          description: Position date
+          example: '2026-04-19'
+        totalMarketValue:
+          type: number
+          description: Total portfolio market value
+          example: 7800000.0
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Connections API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Connections
+  description: Aladdin Data Cloud Snowflake connection management
+paths:
+  /connections:
+    get:
+      operationId: listConnections
+      summary: Aladdin Studio List Data Cloud Connections
+      description: List available Aladdin Data Cloud connections for the authenticated user including Snowflake account details and available schemas.
+      tags:
+      - Connections
+      responses:
+        '200':
+          description: List of available connections
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionList'
+              examples:
+                listConnections200Example:
+                  summary: Default listConnections 200 response
+                  x-microcks-default: true
+                  value:
+                    connections:
+                    - connectionId: adc-conn-001
+                      accountName: blackrock.snowflakecomputing.com
+                      database: ALADDIN_DATA_CLOUD
+                      warehouse: ANALYTICS_WH
+                      status: active
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Connection:
+      title: Connection
+      type: object
+      description: An Aladdin Data Cloud Snowflake connection
+      properties:
+        connectionId:
+          type: string
+          description: Unique connection identifier
+          example: adc-conn-001
+        accountName:
+          type: string
+          description: Snowflake account URL
+          example: blackrock.snowflakecomputing.com
+        database:
+          type: string
+          description: Snowflake database name
+          example: ALADDIN_DATA_CLOUD
+        warehouse:
+          type: string
+          description: Snowflake virtual warehouse
+          example: ANALYTICS_WH
+        status:
+          type: string
+          description: Connection status
+          enum:
+          - active
+          - inactive
+          example: active
+    ConnectionList:
+      title: ConnectionList
+      type: object
+      description: List of available Data Cloud connections
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT

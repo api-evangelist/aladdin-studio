@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: Aladdin Data Cloud Analytics Queries API
+  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  version: 1.0.0
+  contact:
+    name: Aladdin Studio
+    url: https://www.blackrock.com/aladdin/products/apis
+  license:
+    name: Proprietary
+    url: https://www.blackrock.com/aladdin/products/aladdin-studio
+  x-generated-from: documentation
+servers:
+- url: https://api.blackrock.com/adc/v1
+  description: Aladdin Data Cloud API server
+security:
+- OAuth2: []
+- SnowflakeJWT: []
+tags:
+- name: Queries
+  description: SQL query execution against Data Cloud datasets
+paths:
+  /connections/{connectionId}/query:
+    post:
+      operationId: executeQuery
+      summary: Aladdin Studio Execute Data Cloud Query
+      description: Execute a SQL query against the Aladdin Data Cloud Snowflake database and return results. Supports pagination for large result sets.
+      tags:
+      - Queries
+      parameters:
+      - name: connectionId
+        in: path
+        required: true
+        description: Data Cloud connection identifier
+        schema:
+          type: string
+          example: adc-conn-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+            examples:
+              executeQueryRequestExample:
+                summary: Default executeQuery request
+                x-microcks-default: true
+                value:
+                  sql: SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100
+                  warehouse: ANALYTICS_WH
+                  timeout: 300
+      responses:
+        '200':
+          description: Query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+              examples:
+                executeQuery200Example:
+                  summary: Default executeQuery 200 response
+                  x-microcks-default: true
+                  value:
+                    queryId: qry-a1b2c3d4
+                    status: completed
+                    rowCount: 100
+                    columns:
+                    - name: PORTFOLIO_ID
+                      type: VARCHAR
+                    - name: SECURITY_ID
+                      type: VARCHAR
+                    - name: MARKET_VALUE
+                      type: FLOAT
+                    rows:
+                    - - PF-123456
+                      - US0378331005
+                      - 195000.0
+        '202':
+          description: Query accepted, processing asynchronously
+        '400':
+          description: Invalid SQL query
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    QueryRequest:
+      title: QueryRequest
+      type: object
+      description: SQL query request for the Aladdin Data Cloud
+      required:
+      - sql
+      properties:
+        sql:
+          type: string
+          description: SQL query to execute against the Aladdin Data Cloud
+          example: SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100
+        warehouse:
+          type: string
+          description: Snowflake virtual warehouse to use
+          example: ANALYTICS_WH
+        timeout:
+          type: integer
+          description: Query timeout in seconds
+          example: 300
+        maxRows:
+          type: integer
+          description: Maximum number of rows to return
+          example: 10000
+    QueryResult:
+      title: QueryResult
+      type: object
+      description: Results from an Aladdin Data Cloud query execution
+      properties:
+        queryId:
+          type: string
+          description: Unique query execution identifier
+          example: qry-a1b2c3d4
+        status:
+          type: string
+          description: Query execution status
+          enum:
+          - completed
+          - running
+          - failed
+          example: completed
+        rowCount:
+          type: integer
+          description: Number of rows returned
+          example: 100
+        columns:
+          type: array
+          description: Column definitions
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: PORTFOLIO_ID
+              type:
+                type: string
+                example: VARCHAR
+        rows:
+          type: array
+          description: Result rows as arrays
+          items:
+            type: array
+            items: {}
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            adc:read: Read Data Cloud data
+    SnowflakeJWT:
+      type: http
+      scheme: bearer
+      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
+      bearerFormat: JWT
