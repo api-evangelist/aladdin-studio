@@ -10,7 +10,20 @@ tags:
 - BlackRock
 - Data Cloud
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aladdin-studio.png
 description: Aladdin Studio is BlackRock's developer platform enabling institutional investors, asset managers, and wealth
   managers to build custom solutions on top of the Aladdin investment operating system. APIs provide access to portfolio data,
   risk analytics, trading, investment research, and the Aladdin Data Cloud, supporting approximately $25 trillion in assets
@@ -19,49 +32,50 @@ created: '2024-03-05'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: aladdin-studio:graph-api
-  name: Aladdin Graph API
+- aid: aladdin-studio:aladdin-studio-analytics-api
+  name: Aladdin Studio Analytics API
+  description: Portfolio performance and attribution analytics
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
   tags:
-  - Portfolio Data
-  - Investment Management
-  - REST
+  - Analytics
   properties:
-  - url: https://www.blackrock.com/aladdin/products/apis
-    type: Documentation
-  - url: https://www.blackrock.com/aladdin/products/apis
-    type: APIReference
-  - url: openapi/aladdin-studio-graph-openapi.yaml
-    type: OpenAPI
-  - url: json-schema/aladdin-studio-graph-portfolio-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-position-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-position-list-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-graph-security-schema.json
-    type: JSONSchema
-  - url: json-structure/aladdin-studio-graph-portfolio-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-graph-position-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-graph-security-structure.json
-    type: JSONStructure
-  - url: examples/aladdin-studio-graph-portfolio-example.json
-    type: Examples
-  - url: examples/aladdin-studio-graph-position-example.json
-    type: Examples
-  - url: examples/aladdin-studio-graph-portfolio-risk-example.json
-    type: Examples
-  - url: examples/aladdin-studio-graph-security-example.json
-    type: Examples
+  - type: OpenAPI
+    url: openapi/aladdin-studio-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
   - type: X-NaftikoCapability
     url: capabilities/graph-portfolios.yaml
   - type: X-NaftikoCapability
@@ -70,113 +84,1034 @@ apis:
     url: capabilities/graph-risk.yaml
   - type: X-NaftikoCapability
     url: capabilities/graph-securities.yaml
-  humanURL: https://www.blackrock.com/aladdin/products/apis
-  baseURL: https://api.blackrock.com/v1
-  description: The Aladdin Graph API provides RESTful access to portfolio data, securities, positions, risk analytics, and
-    other Aladdin platform capabilities. Powers the AladdinSDK Python client with OAuth and Basic Auth authentication.
-- aid: aladdin-studio:data-cloud-api
-  name: Aladdin Data Cloud API
-  tags:
-  - Data Cloud
-  - Snowflake
-  - Analytics
-  properties:
-  - url: https://www.blackrock.com/aladdin/products/apis
-    type: Documentation
-  - url: openapi/aladdin-studio-data-cloud-openapi.yaml
-    type: OpenAPI
-  - url: json-schema/aladdin-studio-data-cloud-connection-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
-    type: JSONSchema
-  - url: json-structure/aladdin-studio-data-cloud-connection-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
-    type: JSONStructure
-  - url: examples/aladdin-studio-data-cloud-connection-example.json
-    type: Examples
-  - url: examples/aladdin-studio-data-cloud-query-result-example.json
-    type: Examples
-  - url: examples/aladdin-studio-data-cloud-dataset-example.json
-    type: Examples
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
   - type: X-NaftikoCapability
     url: capabilities/data-cloud-connections.yaml
   - type: X-NaftikoCapability
     url: capabilities/data-cloud-datasets.yaml
   - type: X-NaftikoCapability
     url: capabilities/data-cloud-queries.yaml
-  humanURL: https://www.blackrock.com/aladdin/products/apis
-  baseURL: https://api.blackrock.com/adc/v1
-  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing with OAuth and JWT
-    authentication. Enables large-scale portfolio analytics and data science workflows using Snowflake connectors and Snowpark.
-- aid: aladdin-studio:trading-api
-  name: Aladdin Trading API
-  tags:
-  - Trading
-  - Order Management
-  - Financial
-  properties:
-  - url: https://www.blackrock.com/aladdin/products/apis
-    type: Documentation
-  - url: openapi/aladdin-studio-trading-openapi.yaml
-    type: OpenAPI
-  - url: https://pypi.org/project/asdk-plugin-trading/
-    type: SDKs
-    title: Python Trading Plugin
-  - url: json-schema/aladdin-studio-trading-order-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-trading-order-request-schema.json
-    type: JSONSchema
-  - url: json-structure/aladdin-studio-trading-order-structure.json
-    type: JSONStructure
-  - url: examples/aladdin-studio-trading-order-example.json
-    type: Examples
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
   - type: X-NaftikoCapability
     url: capabilities/trading-orders.yaml
-  humanURL: https://www.blackrock.com/aladdin/products/apis
-  baseURL: https://api.blackrock.com/trading/v1
-  description: The Aladdin Trading API enables order management and trading workflow integration. Available as the asdk_plugin_trading
-    Python package built on the AladdinSDK framework.
-- aid: aladdin-studio:investment-research-api
-  name: Aladdin Investment Research API
-  tags:
-  - Investment Research
-  - Analytics
-  - Portfolio
-  properties:
-  - url: https://www.blackrock.com/aladdin/products/apis
-    type: Documentation
-  - url: openapi/aladdin-studio-investment-research-openapi.yaml
-    type: OpenAPI
-  - url: https://pypi.org/project/asdk-plugin-investment-research/
-    type: SDKs
-    title: Python Investment Research Plugin
-  - url: json-schema/aladdin-studio-investment-research-security-research-schema.json
-    type: JSONSchema
-  - url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
-    type: JSONSchema
-  - url: json-structure/aladdin-studio-investment-research-security-research-structure.json
-    type: JSONStructure
-  - url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
-    type: JSONStructure
-  - url: examples/aladdin-studio-investment-research-security-research-example.json
-    type: Examples
-  - url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-    type: Examples
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
   - type: X-NaftikoCapability
     url: capabilities/investment-research-analytics.yaml
   - type: X-NaftikoCapability
     url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-connections-api
+  name: Aladdin Studio Connections API
+  description: Aladdin Data Cloud Snowflake connection management
   humanURL: https://www.blackrock.com/aladdin/products/apis
-  baseURL: https://api.blackrock.com/research/v1
-  description: The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics
-    built on Aladdin's data infrastructure. Available as the asdk_plugin_investment_research Python package.
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-connections-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-datasets-api
+  name: Aladdin Studio Datasets API
+  description: Available dataset and table discovery
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-orders-api
+  name: Aladdin Studio Orders API
+  description: Trading order management and execution
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-orders-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-portfolios-api
+  name: Aladdin Studio Portfolios API
+  description: Portfolio metadata and management operations
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Portfolios
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-portfolios-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-positions-api
+  name: Aladdin Studio Positions API
+  description: Portfolio position and holdings data
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-positions-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-queries-api
+  name: Aladdin Studio Queries API
+  description: SQL query execution against Data Cloud datasets
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-queries-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-research-api
+  name: Aladdin Studio Research API
+  description: Investment research data and analyst ratings
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Research
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-research-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-risk-api
+  name: Aladdin Studio Risk API
+  description: Risk analytics and factor exposure calculations
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Risk
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-risk-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
+- aid: aladdin-studio:aladdin-studio-securities-api
+  name: Aladdin Studio Securities API
+  description: Security reference data and classification
+  humanURL: https://www.blackrock.com/aladdin/products/apis
+  baseURL: https://api.blackrock.com/v1
+  tags:
+  - Securities
+  properties:
+  - type: OpenAPI
+    url: openapi/aladdin-studio-securities-api-openapi.yml
+  - type: Documentation
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: APIReference
+    url: https://www.blackrock.com/aladdin/products/apis
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-position-list-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-factor-exposure-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-portfolio-risk-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-graph-security-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-position-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-portfolio-risk-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-graph-security-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-position-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-portfolio-risk-example.json
+  - type: Examples
+    url: examples/aladdin-studio-graph-security-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/graph-portfolios.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-positions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-risk.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/graph-securities.yaml
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-query-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-data-cloud-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-connection-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-query-result-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-data-cloud-dataset-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-connection-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-query-result-example.json
+  - type: Examples
+    url: examples/aladdin-studio-data-cloud-dataset-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-datasets.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/data-cloud-queries.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-trading/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-trading-order-request-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-trading-order-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-trading-order-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/trading-orders.yaml
+  - type: SDKs
+    url: https://pypi.org/project/asdk-plugin-investment-research/
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-security-research-schema.json
+  - type: JSONSchema
+    url: json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-security-research-structure.json
+  - type: JSONStructure
+    url: json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-security-research-example.json
+  - type: Examples
+    url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-analytics.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/investment-research-research.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/aladdin-studio-agentic-access.yml
