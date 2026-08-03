@@ -1,0 +1,32 @@
+{
+  "provider": "aladdin-studio",
+  "sources": [
+    "aladdin-studio-analytics-api-openapi.yml",
+    "aladdin-studio-connections-api-openapi.yml",
+    "aladdin-studio-datasets-api-openapi.yml",
+    "aladdin-studio-orders-api-openapi.yml",
+    "aladdin-studio-portfolios-api-openapi.yml",
+    "aladdin-studio-positions-api-openapi.yml",
+    "aladdin-studio-queries-api-openapi.yml",
+    "aladdin-studio-research-api-openapi.yml",
+    "aladdin-studio-risk-api-openapi.yml",
+    "aladdin-studio-securities-api-openapi.yml"
+  ],
+  "outputs": [
+    "aladdin-studio-analytics-api-openapi.yml",
+    "aladdin-studio-connections-api-openapi.yml",
+    "aladdin-studio-datasets-api-openapi.yml",
+    "aladdin-studio-orders-api-openapi.yml",
+    "aladdin-studio-portfolios-api-openapi.yml",
+    "aladdin-studio-positions-api-openapi.yml",
+    "aladdin-studio-queries-api-openapi.yml",
+    "aladdin-studio-research-api-openapi.yml",
+    "aladdin-studio-risk-api-openapi.yml",
+    "aladdin-studio-securities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
