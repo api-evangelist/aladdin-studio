@@ -76,14 +76,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -104,12 +96,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -120,8 +106,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -136,10 +120,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-connections-api
   name: Aladdin Studio Connections API
   description: Aladdin Data Cloud Snowflake connection management
@@ -184,14 +164,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -212,12 +184,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -228,8 +194,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -244,10 +208,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-datasets-api
   name: Aladdin Studio Datasets API
   description: Available dataset and table discovery
@@ -292,14 +252,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -320,12 +272,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -336,8 +282,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -352,10 +296,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-orders-api
   name: Aladdin Studio Orders API
   description: Trading order management and execution
@@ -400,14 +340,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -428,12 +360,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -444,8 +370,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -460,10 +384,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-portfolios-api
   name: Aladdin Studio Portfolios API
   description: Portfolio metadata and management operations
@@ -508,14 +428,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -536,12 +448,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -552,8 +458,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -568,10 +472,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-positions-api
   name: Aladdin Studio Positions API
   description: Portfolio position and holdings data
@@ -616,14 +516,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -644,12 +536,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -660,8 +546,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -676,10 +560,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-queries-api
   name: Aladdin Studio Queries API
   description: SQL query execution against Data Cloud datasets
@@ -724,14 +604,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -752,12 +624,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -768,8 +634,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -784,10 +648,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-research-api
   name: Aladdin Studio Research API
   description: Investment research data and analyst ratings
@@ -832,14 +692,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -860,12 +712,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -876,8 +722,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -892,10 +736,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-risk-api
   name: Aladdin Studio Risk API
   description: Risk analytics and factor exposure calculations
@@ -940,14 +780,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -968,12 +800,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -984,8 +810,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -1000,10 +824,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 - aid: aladdin-studio:aladdin-studio-securities-api
   name: Aladdin Studio Securities API
   description: Security reference data and classification
@@ -1048,14 +868,6 @@ apis:
     url: examples/aladdin-studio-graph-portfolio-risk-example.json
   - type: Examples
     url: examples/aladdin-studio-graph-security-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/graph-portfolios.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-positions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-risk.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/graph-securities.yaml
   - type: JSONSchema
     url: json-schema/aladdin-studio-data-cloud-connection-schema.json
   - type: JSONSchema
@@ -1076,12 +888,6 @@ apis:
     url: examples/aladdin-studio-data-cloud-query-result-example.json
   - type: Examples
     url: examples/aladdin-studio-data-cloud-dataset-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-connections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/data-cloud-queries.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-trading/
   - type: JSONSchema
@@ -1092,8 +898,6 @@ apis:
     url: json-structure/aladdin-studio-trading-order-structure.json
   - type: Examples
     url: examples/aladdin-studio-trading-order-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/trading-orders.yaml
   - type: SDKs
     url: https://pypi.org/project/asdk-plugin-investment-research/
   - type: JSONSchema
@@ -1108,10 +912,6 @@ apis:
     url: examples/aladdin-studio-investment-research-security-research-example.json
   - type: Examples
     url: examples/aladdin-studio-investment-research-portfolio-analytics-example.json
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-analytics.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/investment-research-research.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/aladdin-studio-agentic-access.yml
