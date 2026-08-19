@@ -30,7 +30,7 @@ description: Aladdin Studio is BlackRock's developer platform enabling instituti
   managed on the platform.
 created: '2024-03-05'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: aladdin-studio:aladdin-studio-analytics-api
   name: Aladdin Studio Analytics API
