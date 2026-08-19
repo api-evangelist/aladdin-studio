@@ -1,0 +1,227 @@
+{
+  "item": [
+    {
+      "id": "652032aa-06bf-422c-9713-6887b111e8cb",
+      "name": "Risk",
+      "description": {
+        "content": "Risk analytics and factor exposure calculations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5cc3816b-d67c-401f-90c0-81cb77cfa917",
+          "name": "Aladdin Studio Get Portfolio Risk Analytics",
+          "request": {
+            "name": "Aladdin Studio Get Portfolio Risk Analytics",
+            "description": {
+              "content": "Retrieve risk analytics for a portfolio including factor exposures, tracking error, VaR, and contribution metrics computed by Aladdin's risk engine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "portfolios",
+                ":portfolioId",
+                "risk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asOfDate",
+                  "value": "<date>",
+                  "description": "Risk calculation date in YYYY-MM-DD format"
+                },
+                {
+                  "disabled": false,
+                  "key": "model",
+                  "value": "<string>",
+                  "description": "Risk model to use for calculation"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portfolioId",
+                  "description": "(Required) Unique portfolio identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ebe223e6-facb-4529-8d28-cbabe2320801",
+              "name": "Portfolio risk analytics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "portfolios",
+                    ":portfolioId",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "model",
+                      "value": "AXUS4"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portfolioId",
+                      "description": "(Required) Unique portfolio identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"portfolioId\": \"PF-123456\",\n  \"asOfDate\": \"2026-04-19\",\n  \"trackingError\": 0.0342,\n  \"var95\": -0.0285,\n  \"beta\": 1.02,\n  \"factorExposures\": [\n    {\n      \"factorName\": \"Market\",\n      \"exposure\": 1.02\n    },\n    {\n      \"factorName\": \"Size\",\n      \"exposure\": -0.15\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "225d1fda-dd41-46bf-96c2-1ecd3ee3cd7f",
+              "name": "Portfolio not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "portfolios",
+                    ":portfolioId",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "model",
+                      "value": "AXUS4"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portfolioId",
+                      "description": "(Required) Unique portfolio identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blackrock.com/adc/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "adc:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.blackrock.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8938291d-8050-435b-9d4e-b7582c67993d",
+    "name": "Aladdin Data Cloud Analytics Risk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
+      "type": "text/plain"
+    }
+  }
+}

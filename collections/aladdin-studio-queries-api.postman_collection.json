@@ -1,0 +1,282 @@
+{
+  "item": [
+    {
+      "id": "f97153c3-b0e1-42e6-b427-95368c5859cb",
+      "name": "Queries",
+      "description": {
+        "content": "SQL query execution against Data Cloud datasets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d5c57dc-5eb4-4faf-b8d9-ccde416d6103",
+          "name": "Aladdin Studio Execute Data Cloud Query",
+          "request": {
+            "name": "Aladdin Studio Execute Data Cloud Query",
+            "description": {
+              "content": "Execute a SQL query against the Aladdin Data Cloud Snowflake database and return results. Supports pagination for large result sets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections",
+                ":connectionId",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectionId",
+                  "description": "(Required) Data Cloud connection identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sql\": \"<string>\",\n  \"warehouse\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"maxRows\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3e410dcd-3072-40e7-acd4-5b9427399b89",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connectionId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionId",
+                      "description": "(Required) Data Cloud connection identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sql\": \"SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100\",\n  \"warehouse\": \"ANALYTICS_WH\",\n  \"timeout\": 300\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryId\": \"qry-a1b2c3d4\",\n  \"status\": \"completed\",\n  \"rowCount\": 100,\n  \"columns\": [\n    {\n      \"name\": \"PORTFOLIO_ID\",\n      \"type\": \"VARCHAR\"\n    },\n    {\n      \"name\": \"SECURITY_ID\",\n      \"type\": \"VARCHAR\"\n    },\n    {\n      \"name\": \"MARKET_VALUE\",\n      \"type\": \"FLOAT\"\n    }\n  ],\n  \"rows\": [\n    [\n      \"PF-123456\",\n      \"US0378331005\",\n      195000\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d099ab71-76ab-4044-8e23-a323d9812c90",
+              "name": "Query accepted, processing asynchronously",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connectionId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionId",
+                      "description": "(Required) Data Cloud connection identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sql\": \"SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100\",\n  \"warehouse\": \"ANALYTICS_WH\",\n  \"timeout\": 300\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "781ded61-882c-45ec-bc49-7acce8ed51ae",
+              "name": "Invalid SQL query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connectionId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionId",
+                      "description": "(Required) Data Cloud connection identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sql\": \"SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100\",\n  \"warehouse\": \"ANALYTICS_WH\",\n  \"timeout\": 300\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blackrock.com/adc/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "adc:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.blackrock.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fef31649-207e-432c-945b-230b1deb56d0",
+    "name": "Aladdin Data Cloud Analytics Queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
+      "type": "text/plain"
+    }
+  }
+}

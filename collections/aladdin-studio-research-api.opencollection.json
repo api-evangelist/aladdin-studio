@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aladdin Data Cloud Analytics Research API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.blackrock.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Research",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aladdin Studio Get Security Research",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blackrock.com/adc/v1/securities/:securityId/research",
+            "params": [
+              {
+                "name": "securityId",
+                "value": "",
+                "type": "path",
+                "description": "Security identifier (ISIN or internal ID)"
+              }
+            ]
+          },
+          "docs": "Retrieve investment research data for a specific security including analyst ratings, price targets, and research notes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

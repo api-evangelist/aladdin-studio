@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "7b3ee310-1abd-46b6-a61c-4c2ad0f129f8",
+      "name": "Research",
+      "description": {
+        "content": "Investment research data and analyst ratings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d0d32ff-13d6-474b-a7e3-c3f1f45407a4",
+          "name": "Aladdin Studio Get Security Research",
+          "request": {
+            "name": "Aladdin Studio Get Security Research",
+            "description": {
+              "content": "Retrieve investment research data for a specific security including analyst ratings, price targets, and research notes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "securities",
+                ":securityId",
+                "research"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "securityId",
+                  "description": "(Required) Security identifier (ISIN or internal ID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b7e25a9-8170-4e6b-a5f5-980d78b0ad7d",
+              "name": "Security research data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "securities",
+                    ":securityId",
+                    "research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "securityId",
+                      "description": "(Required) Security identifier (ISIN or internal ID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"securityId\": \"US0378331005\",\n  \"ticker\": \"AAPL\",\n  \"rating\": \"buy\",\n  \"priceTarget\": 225,\n  \"analystCount\": 42,\n  \"consensusDate\": \"2026-04-19\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "212a6f2e-1725-4527-858c-8526c890f7b0",
+              "name": "Security not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "securities",
+                    ":securityId",
+                    "research"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "securityId",
+                      "description": "(Required) Security identifier (ISIN or internal ID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.blackrock.com/adc/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "adc:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.blackrock.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "537195b0-ab2e-4234-ab9c-bf86146d9763",
+    "name": "Aladdin Data Cloud Analytics Research API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
+      "type": "text/plain"
+    }
+  }
+}

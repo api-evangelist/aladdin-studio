@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aladdin Data Cloud Analytics Portfolios API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.blackrock.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Portfolios",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aladdin Studio List Portfolios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blackrock.com/adc/v1/portfolios",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of portfolios accessible to the authenticated user. Returns portfolio metadata including identifiers, names, and classification attributes."
+        },
+        {
+          "info": {
+            "name": "Aladdin Studio Get Portfolio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.blackrock.com/adc/v1/portfolios/:portfolioId",
+            "params": [
+              {
+                "name": "portfolioId",
+                "value": "",
+                "type": "path",
+                "description": "Unique portfolio identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific portfolio including metadata, benchmark, currency, and classification attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
