@@ -302,6 +302,8 @@ apis:
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -390,6 +392,8 @@ apis:
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/v1
   tags:
+  - Portfolio
+  tags_raw:
   - Portfolios
   properties:
   - type: OpenAPI
@@ -566,6 +570,8 @@ apis:
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/v1
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI
