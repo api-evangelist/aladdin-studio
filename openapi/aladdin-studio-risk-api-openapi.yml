@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Aladdin Data Cloud Analytics Risk API
   description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
@@ -77,6 +77,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FactorExposure:
+      title: FactorExposure
+      type: object
+      description: Risk factor exposure for a portfolio
+      properties:
+        factorName:
+          type: string
+          description: Risk factor name
+          example: Market
+        exposure:
+          type: number
+          description: Factor exposure value
+          example: 1.02
+        contribution:
+          type: number
+          description: Contribution to portfolio risk
+          example: 0.0285
     PortfolioRisk:
       title: PortfolioRisk
       type: object
@@ -116,23 +133,6 @@ components:
           type: string
           description: Risk model used for calculation
           example: AXUS4
-    FactorExposure:
-      title: FactorExposure
-      type: object
-      description: Risk factor exposure for a portfolio
-      properties:
-        factorName:
-          type: string
-          description: Risk factor name
-          example: Market
-        exposure:
-          type: number
-          description: Factor exposure value
-          example: 1.02
-        contribution:
-          type: number
-          description: Contribution to portfolio risk
-          example: 0.0285
   securitySchemes:
     OAuth2:
       type: oauth2

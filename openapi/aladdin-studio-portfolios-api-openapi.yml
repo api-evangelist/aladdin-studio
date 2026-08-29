@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Aladdin Data Cloud Analytics Portfolios API
   description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
@@ -107,28 +107,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PortfolioList:
-      title: PortfolioList
-      type: object
-      description: Paginated list of portfolios
-      properties:
-        portfolios:
-          type: array
-          description: Array of portfolio objects
-          items:
-            $ref: '#/components/schemas/Portfolio'
-        totalCount:
-          type: integer
-          description: Total number of portfolios
-          example: 125
-        page:
-          type: integer
-          description: Current page number
-          example: 1
-        pageSize:
-          type: integer
-          description: Number of results per page
-          example: 100
     Portfolio:
       title: Portfolio
       type: object
@@ -171,6 +149,28 @@ components:
           type: string
           description: Investment strategy
           example: Long Only
+    PortfolioList:
+      title: PortfolioList
+      type: object
+      description: Paginated list of portfolios
+      properties:
+        portfolios:
+          type: array
+          description: Array of portfolio objects
+          items:
+            $ref: '#/components/schemas/Portfolio'
+        totalCount:
+          type: integer
+          description: Total number of portfolios
+          example: 125
+        page:
+          type: integer
+          description: Current page number
+          example: 1
+        pageSize:
+          type: integer
+          description: Number of results per page
+          example: 100
   securitySchemes:
     OAuth2:
       type: oauth2
