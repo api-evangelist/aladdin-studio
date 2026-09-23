@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Aladdin Data Cloud Analytics Positions API
-  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  title: Aladdin Graph Positions API
+  description: The Aladdin Graph API provides RESTful access to portfolio data, securities, positions, risk analytics, and Aladdin platform capabilities. Powers the AladdinSDK Python client with OpenAPI-generated bindings for institutional asset managers, risk teams, and quantitative researchers.
   version: 1.0.0
   contact:
     name: Aladdin Studio
@@ -11,11 +11,11 @@ info:
     url: https://www.blackrock.com/aladdin/products/aladdin-studio
   x-generated-from: documentation
 servers:
-- url: https://api.blackrock.com/adc/v1
-  description: Aladdin Data Cloud API server
+- url: https://api.blackrock.com/v1
+  description: Aladdin API production server
 security:
 - OAuth2: []
-- SnowflakeJWT: []
+- BasicAuth: []
 tags:
 - name: Positions
   description: Portfolio position and holdings data
@@ -70,29 +70,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PositionList:
-      title: PositionList
-      type: object
-      description: List of portfolio positions as of a date
-      properties:
-        positions:
-          type: array
-          description: Array of position objects
-          items:
-            $ref: '#/components/schemas/Position'
-        portfolioId:
-          type: string
-          description: Portfolio identifier
-          example: PF-123456
-        asOfDate:
-          type: string
-          format: date
-          description: Position date
-          example: '2026-04-19'
-        totalMarketValue:
-          type: number
-          description: Total portfolio market value
-          example: 7800000.0
     Position:
       title: Position
       type: object
@@ -130,17 +107,48 @@ components:
           type: string
           description: GICS sector
           example: Technology
+    PositionList:
+      title: PositionList
+      type: object
+      description: List of portfolio positions as of a date
+      properties:
+        positions:
+          type: array
+          description: Array of position objects
+          items:
+            $ref: '#/components/schemas/Position'
+        portfolioId:
+          type: string
+          description: Portfolio identifier
+          example: PF-123456
+        asOfDate:
+          type: string
+          format: date
+          description: Position date
+          example: '2026-04-19'
+        totalMarketValue:
+          type: number
+          description: Total portfolio market value
+          example: 7800000.0
   securitySchemes:
     OAuth2:
       type: oauth2
-      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      description: OAuth 2.0 authentication supporting client_credentials and refresh_token flows
       flows:
         clientCredentials:
           tokenUrl: https://api.blackrock.com/oauth/token
           scopes:
-            adc:read: Read Data Cloud data
-    SnowflakeJWT:
+            portfolio:read: Read portfolio data
+            risk:read: Read risk analytics
+            trading:read: Read trading data
+            trading:write: Create and manage orders
+        authorizationCode:
+          authorizationUrl: https://api.blackrock.com/oauth/authorize
+          tokenUrl: https://api.blackrock.com/oauth/token
+          scopes:
+            portfolio:read: Read portfolio data
+            risk:read: Read risk analytics
+    BasicAuth:
       type: http
-      scheme: bearer
-      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
-      bearerFormat: JWT
+      scheme: basic
+      description: Basic authentication using API token and user credentials

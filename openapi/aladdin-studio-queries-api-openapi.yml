@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Aladdin Data Cloud Analytics Queries API
+  title: Aladdin Data Cloud Queries API
   description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
   version: 1.0.0
   contact:

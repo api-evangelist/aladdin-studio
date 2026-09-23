@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Aladdin Data Cloud Analytics API
-  description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
+  title: Aladdin Investment Research Analytics API
+  description: The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics built on Aladdin's data infrastructure. Available via the asdk_plugin_investment_research Python package.
   version: 1.0.0
   contact:
     name: Aladdin Studio
@@ -11,11 +11,10 @@ info:
     url: https://www.blackrock.com/aladdin/products/aladdin-studio
   x-generated-from: documentation
 servers:
-- url: https://api.blackrock.com/adc/v1
-  description: Aladdin Data Cloud API server
+- url: https://api.blackrock.com/research/v1
+  description: Aladdin Investment Research API server
 security:
 - OAuth2: []
-- SnowflakeJWT: []
 tags:
 - name: Analytics
   description: Portfolio performance and attribution analytics
@@ -112,14 +111,10 @@ components:
   securitySchemes:
     OAuth2:
       type: oauth2
-      description: OAuth 2.0 with access tokens for Data Cloud authentication
+      description: OAuth 2.0 authentication for research data access
       flows:
         clientCredentials:
           tokenUrl: https://api.blackrock.com/oauth/token
           scopes:
-            adc:read: Read Data Cloud data
-    SnowflakeJWT:
-      type: http
-      scheme: bearer
-      description: Snowflake JWT authentication using RSA key pairs for Data Cloud
-      bearerFormat: JWT
+            research:read: Read research data
+            analytics:read: Read analytics data

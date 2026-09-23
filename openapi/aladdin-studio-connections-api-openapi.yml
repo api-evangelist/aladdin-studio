@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Aladdin Data Cloud Analytics Connections API
+  title: Aladdin Data Cloud Connections API
   description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
   version: 1.0.0
   contact:
@@ -52,15 +52,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ConnectionList:
-      title: ConnectionList
-      type: object
-      description: List of available Data Cloud connections
-      properties:
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Connection'
     Connection:
       title: Connection
       type: object
@@ -89,6 +80,15 @@ components:
           - active
           - inactive
           example: active
+    ConnectionList:
+      title: ConnectionList
+      type: object
+      description: List of available Data Cloud connections
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
   securitySchemes:
     OAuth2:
       type: oauth2

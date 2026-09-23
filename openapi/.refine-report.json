@@ -1,34 +1,44 @@
 {
   "provider": "aladdin-studio",
   "sources": [
-    "aladdin-studio-analytics-api-openapi.yml",
-    "aladdin-studio-connections-api-openapi.yml",
-    "aladdin-studio-datasets-api-openapi.yml",
-    "aladdin-studio-orders-api-openapi.yml",
-    "aladdin-studio-portfolios-api-openapi.yml",
-    "aladdin-studio-positions-api-openapi.yml",
-    "aladdin-studio-queries-api-openapi.yml",
-    "aladdin-studio-research-api-openapi.yml",
-    "aladdin-studio-risk-api-openapi.yml",
-    "aladdin-studio-securities-api-openapi.yml"
+    "_ae-authored/aladdin-studio-data-cloud-openapi.yaml",
+    "_ae-authored/aladdin-studio-graph-openapi.yaml",
+    "_ae-authored/aladdin-studio-investment-research-openapi.yaml",
+    "_ae-authored/aladdin-studio-trading-openapi.yaml"
   ],
   "outputs": [
-    "aladdin-studio-analytics-api-openapi.yml",
     "aladdin-studio-connections-api-openapi.yml",
     "aladdin-studio-datasets-api-openapi.yml",
-    "aladdin-studio-orders-api-openapi.yml",
+    "aladdin-studio-queries-api-openapi.yml",
     "aladdin-studio-portfolios-api-openapi.yml",
     "aladdin-studio-positions-api-openapi.yml",
-    "aladdin-studio-queries-api-openapi.yml",
-    "aladdin-studio-research-api-openapi.yml",
     "aladdin-studio-risk-api-openapi.yml",
-    "aladdin-studio-securities-api-openapi.yml"
+    "aladdin-studio-securities-api-openapi.yml",
+    "aladdin-studio-analytics-api-openapi.yml",
+    "aladdin-studio-research-api-openapi.yml",
+    "aladdin-studio-orders-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "aladdin-studio-data-cloud-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aladdin-studio-graph-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aladdin-studio-investment-research-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aladdin-studio-trading-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "aladdin-studio-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-portfolios-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-research-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-risk-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aladdin-studio-securities-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

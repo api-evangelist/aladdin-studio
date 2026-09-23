@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Aladdin Data Cloud Analytics Datasets API
+  title: Aladdin Data Cloud Datasets API
   description: The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.
   version: 1.0.0
   contact:
@@ -71,6 +71,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DatasetList:
+      title: DatasetList
+      type: object
+      description: List of available datasets in the Data Cloud
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
     Dataset:
       title: Dataset
       type: object
@@ -97,15 +106,6 @@ components:
           format: date-time
           description: Last update timestamp
           example: '2026-04-19T00:00:00Z'
-    DatasetList:
-      title: DatasetList
-      type: object
-      description: List of available datasets in the Data Cloud
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
   securitySchemes:
     OAuth2:
       type: oauth2
