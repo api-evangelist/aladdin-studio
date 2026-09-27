@@ -84,29 +84,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    QueryRequest:
-      title: QueryRequest
-      type: object
-      description: SQL query request for the Aladdin Data Cloud
-      required:
-      - sql
-      properties:
-        sql:
-          type: string
-          description: SQL query to execute against the Aladdin Data Cloud
-          example: SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100
-        warehouse:
-          type: string
-          description: Snowflake virtual warehouse to use
-          example: ANALYTICS_WH
-        timeout:
-          type: integer
-          description: Query timeout in seconds
-          example: 300
-        maxRows:
-          type: integer
-          description: Maximum number of rows to return
-          example: 10000
     QueryResult:
       title: QueryResult
       type: object
@@ -146,6 +123,29 @@ components:
           items:
             type: array
             items: {}
+    QueryRequest:
+      title: QueryRequest
+      type: object
+      description: SQL query request for the Aladdin Data Cloud
+      required:
+      - sql
+      properties:
+        sql:
+          type: string
+          description: SQL query to execute against the Aladdin Data Cloud
+          example: SELECT * FROM PORTFOLIO_HOLDINGS WHERE AS_OF_DATE = CURRENT_DATE LIMIT 100
+        warehouse:
+          type: string
+          description: Snowflake virtual warehouse to use
+          example: ANALYTICS_WH
+        timeout:
+          type: integer
+          description: Query timeout in seconds
+          example: 300
+        maxRows:
+          type: integer
+          description: Maximum number of rows to return
+          example: 10000
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -2,6 +2,14 @@ aid: aladdin-studio
 url: https://raw.githubusercontent.com/api-evangelist/aladdin-studio/refs/heads/main/apis.yml
 name: Aladdin Studio
 tags:
+- Finance
+- Investment Management
+- Portfolio Analytics
+- Risk Management
+- Asset Management
+- BlackRock
+- Data Cloud
+tags_raw:
 - Financial
 - Investment Management
 - Portfolio Analytics
@@ -759,6 +767,8 @@ apis:
   humanURL: https://www.blackrock.com/aladdin/products/apis
   baseURL: https://api.blackrock.com/v1
   tags:
+  - Risk Management
+  tags_raw:
   - Risk
   properties:
   - type: OpenAPI

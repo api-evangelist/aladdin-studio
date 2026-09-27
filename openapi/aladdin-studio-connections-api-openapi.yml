@@ -52,6 +52,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ConnectionList:
+      title: ConnectionList
+      type: object
+      description: List of available Data Cloud connections
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
     Connection:
       title: Connection
       type: object
@@ -80,15 +89,6 @@ components:
           - active
           - inactive
           example: active
-    ConnectionList:
-      title: ConnectionList
-      type: object
-      description: List of available Data Cloud connections
-      properties:
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Connection'
   securitySchemes:
     OAuth2:
       type: oauth2
