@@ -94,7 +94,7 @@ The Aladdin Graph API provides RESTful access to portfolio data, securities, pos
 
 - [Documentation](https://www.blackrock.com/aladdin/products/apis)
 - [APIReference](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/aladdin-studio-graph-openapi.yaml)
+- [OpenAPI](openapi/_ae-authored/aladdin-studio-graph-openapi.yaml)
 - [JSONSchema - Portfolio](json-schema/aladdin-studio-graph-portfolio-schema.json)
 - [JSONSchema - Position](json-schema/aladdin-studio-graph-position-schema.json)
 - [JSONSchema - Portfolio Risk](json-schema/aladdin-studio-graph-portfolio-risk-schema.json)
@@ -112,7 +112,7 @@ The Aladdin Data Cloud API provides access to Snowflake-based analytics data war
 #### Properties
 
 - [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/aladdin-studio-data-cloud-openapi.yaml)
+- [OpenAPI](openapi/_ae-authored/aladdin-studio-data-cloud-openapi.yaml)
 - [JSONSchema - Connection](json-schema/aladdin-studio-data-cloud-connection-schema.json)
 - [JSONSchema - Query Request](json-schema/aladdin-studio-data-cloud-query-request-schema.json)
 - [JSONSchema - Query Result](json-schema/aladdin-studio-data-cloud-query-result-schema.json)
@@ -130,7 +130,7 @@ The Aladdin Trading API enables order management and trading workflow integratio
 #### Properties
 
 - [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/aladdin-studio-trading-openapi.yaml)
+- [OpenAPI](openapi/_ae-authored/aladdin-studio-trading-openapi.yaml)
 - [SDK - Python Trading Plugin](https://pypi.org/project/asdk-plugin-trading/)
 - [JSONSchema - Order](json-schema/aladdin-studio-trading-order-schema.json)
 
@@ -146,7 +146,7 @@ The Aladdin Investment Research API provides access to research data, analyst in
 #### Properties
 
 - [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/aladdin-studio-investment-research-openapi.yaml)
+- [OpenAPI](openapi/_ae-authored/aladdin-studio-investment-research-openapi.yaml)
 - [SDK - Python Investment Research Plugin](https://pypi.org/project/asdk-plugin-investment-research/)
 - [JSONSchema - Security Research](json-schema/aladdin-studio-investment-research-security-research-schema.json)
 - [JSONSchema - Portfolio Analytics](json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json)
@@ -204,10 +204,10 @@ Machine-readable API specifications organized by format.
 
 ### OpenAPI
 
-- [Aladdin Graph API](openapi/aladdin-studio-graph-openapi.yaml)
-- [Aladdin Data Cloud API](openapi/aladdin-studio-data-cloud-openapi.yaml)
-- [Aladdin Trading API](openapi/aladdin-studio-trading-openapi.yaml)
-- [Aladdin Investment Research API](openapi/aladdin-studio-investment-research-openapi.yaml)
+- [Aladdin Graph API](openapi/_ae-authored/aladdin-studio-graph-openapi.yaml)
+- [Aladdin Data Cloud API](openapi/_ae-authored/aladdin-studio-data-cloud-openapi.yaml)
+- [Aladdin Trading API](openapi/_ae-authored/aladdin-studio-trading-openapi.yaml)
+- [Aladdin Investment Research API](openapi/_ae-authored/aladdin-studio-investment-research-openapi.yaml)
 
 ### JSON Schema
 
