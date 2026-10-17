@@ -173,19 +173,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OrderList:
-      title: OrderList
-      type: object
-      description: Paginated list of trading orders
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        totalCount:
-          type: integer
-          description: Total number of orders
-          example: 42
     Order:
       title: Order
       type: object
@@ -249,6 +236,19 @@ components:
           format: date-time
           description: Order fill timestamp
           example: '2026-04-19T10:31:05Z'
+    OrderList:
+      title: OrderList
+      type: object
+      description: Paginated list of trading orders
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        totalCount:
+          type: integer
+          description: Total number of orders
+          example: 42
     OrderRequest:
       title: OrderRequest
       type: object

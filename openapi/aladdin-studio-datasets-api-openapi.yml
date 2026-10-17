@@ -71,15 +71,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DatasetList:
-      title: DatasetList
-      type: object
-      description: List of available datasets in the Data Cloud
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
     Dataset:
       title: Dataset
       type: object
@@ -106,6 +97,15 @@ components:
           format: date-time
           description: Last update timestamp
           example: '2026-04-19T00:00:00Z'
+    DatasetList:
+      title: DatasetList
+      type: object
+      description: List of available datasets in the Data Cloud
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
   securitySchemes:
     OAuth2:
       type: oauth2
