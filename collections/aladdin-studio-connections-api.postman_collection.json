@@ -1,140 +1,129 @@
 {
+  "info": {
+    "_postman_id": "bc73819a-970b-4b54-a8c5-64d4ff463d53",
+    "name": "Aladdin Data Cloud Connections API",
+    "description": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:03:26.000Z",
+    "updatedAt": "2026-10-22T02:03:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc73819a-970b-4b54-a8c5-64d4ff463d53"
+  },
   "item": [
     {
-      "id": "3adc0e33-d366-4a57-a046-9283beaa8f46",
-      "name": "Connections",
-      "description": {
-        "content": "Aladdin Data Cloud Snowflake connection management",
-        "type": "text/plain"
-      },
+      "name": "connections",
       "item": [
         {
-          "id": "4bb24f00-fb1c-4561-9fc5-3a0c061f2415",
           "name": "Aladdin Studio List Data Cloud Connections",
+          "id": "d4a8957a-3935-4fab-8414-d896590058f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Aladdin Studio List Data Cloud Connections",
-            "description": {
-              "content": "List available Aladdin Data Cloud connections for the authenticated user including Snowflake account details and available schemas.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "connections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/connections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "connections"
+              ]
+            },
+            "description": "List available Aladdin Data Cloud connections for the authenticated user including Snowflake account details and available schemas."
           },
           "response": [
             {
-              "id": "faffd79d-f5aa-49cb-bc95-7c6d834d462d",
+              "id": "dd4f910e-6a0e-4c3f-a260-9b570d0d85ab",
               "name": "List of available connections",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/connections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connections"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"connections\": [\n    {\n      \"connectionId\": \"adc-conn-001\",\n      \"accountName\": \"blackrock.snowflakecomputing.com\",\n      \"database\": \"ALADDIN_DATA_CLOUD\",\n      \"warehouse\": \"ANALYTICS_WH\",\n      \"status\": \"active\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"connections\": [\n    {\n      \"connectionId\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"database\": \"<string>\",\n      \"warehouse\": \"<string>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"connectionId\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"database\": \"<string>\",\n      \"warehouse\": \"<string>\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T02:03:27.000Z",
+              "updatedAt": "2026-10-22T02:03:27.000Z",
+              "uid": "35240-dd4f910e-6a0e-4c3f-a260-9b570d0d85ab"
             },
             {
-              "id": "04502afd-a20f-4db8-9a6e-3328ec44b510",
+              "id": "c83dfd17-c99e-4228-b539-a06b02ee84fb",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: oauth2",
                     "key": "Authorization",
                     "value": "<token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/connections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connections"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:03:27.000Z",
+              "updatedAt": "2026-10-22T02:03:27.000Z",
+              "uid": "35240-c83dfd17-c99e-4228-b539-a06b02ee84fb"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:03:27.000Z",
+          "updatedAt": "2026-10-22T02:03:27.000Z",
+          "uid": "35240-d4a8957a-3935-4fab-8414-d896590058f1"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.blackrock.com/adc/v1",
-      "key": "baseUrl"
+      "id": "cbd03c4c-3ba2-464d-a978-26d19b3db2b1",
+      "createdAt": "2026-10-22T02:03:27.000Z",
+      "updatedAt": "2026-10-22T02:03:27.000Z",
+      "uid": "35240-cbd03c4c-3ba2-464d-a978-26d19b3db2b1"
     }
   ],
   "auth": {
@@ -142,25 +131,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "adc:read"
+        "value": "adc:read",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://api.blackrock.com/oauth/token"
+        "value": "https://api.blackrock.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5f77c17d-be79-413f-ac54-76a1e87d1739",
-    "name": "Aladdin Data Cloud Analytics Connections API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.blackrock.com/adc/v1"
     }
-  }
+  ]
 }

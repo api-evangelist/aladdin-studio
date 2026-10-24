@@ -1,170 +1,171 @@
 {
+  "info": {
+    "_postman_id": "3a5336e6-fa85-43a6-bd21-81f9d7790226",
+    "name": "Aladdin Investment Research API",
+    "description": "The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics built on Aladdin's data infrastructure. Available via the asdk_plugin_investment_research Python package.\n\nContact Support:\n Name: Aladdin Studio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:04:05.000Z",
+    "updatedAt": "2026-10-22T02:04:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3a5336e6-fa85-43a6-bd21-81f9d7790226"
+  },
   "item": [
     {
-      "id": "7b3ee310-1abd-46b6-a61c-4c2ad0f129f8",
-      "name": "Research",
-      "description": {
-        "content": "Investment research data and analyst ratings",
-        "type": "text/plain"
-      },
+      "name": "securities",
       "item": [
         {
-          "id": "4d0d32ff-13d6-474b-a7e3-c3f1f45407a4",
-          "name": "Aladdin Studio Get Security Research",
-          "request": {
-            "name": "Aladdin Studio Get Security Research",
-            "description": {
-              "content": "Retrieve investment research data for a specific security including analyst ratings, price targets, and research notes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "securities",
-                ":securityId",
-                "research"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "securityId",
-                  "description": "(Required) Security identifier (ISIN or internal ID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{securityId}",
+          "item": [
             {
-              "id": "5b7e25a9-8170-4e6b-a5f5-980d78b0ad7d",
-              "name": "Security research data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "securities",
-                    ":securityId",
-                    "research"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "securityId",
-                      "description": "(Required) Security identifier (ISIN or internal ID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+              "name": "research",
+              "item": [
+                {
+                  "name": "Aladdin Studio Get Security Research",
+                  "id": "8eb05edf-9d2c-4940-a902-3c8fd712935f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"securityId\": \"US0378331005\",\n  \"ticker\": \"AAPL\",\n  \"rating\": \"buy\",\n  \"priceTarget\": 225,\n  \"analystCount\": 42,\n  \"consensusDate\": \"2026-04-19\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "212a6f2e-1725-4527-858c-8526c890f7b0",
-              "name": "Security not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "securities",
-                    ":securityId",
-                    "research"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "securityId",
-                      "description": "(Required) Security identifier (ISIN or internal ID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/securities/:securityId/research",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "securities",
+                        ":securityId",
+                        "research"
+                      ],
+                      "variable": [
+                        {
+                          "id": "83d893d0-a612-4ae1-b4dd-f49d8027101e",
+                          "key": "securityId",
+                          "value": "<string>",
+                          "description": "(Required) Security identifier (ISIN or internal ID)"
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    "description": "Retrieve investment research data for a specific security including analyst ratings, price targets, and research notes."
+                  },
+                  "response": [
+                    {
+                      "id": "32d23243-9a30-4352-8e92-9b3b9bb93b0f",
+                      "name": "Security research data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/securities/:securityId/research",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "securities",
+                            ":securityId",
+                            "research"
+                          ],
+                          "variable": [
+                            {
+                              "key": "securityId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"securityId\": \"<string>\",\n  \"ticker\": \"<string>\",\n  \"rating\": \"sell\",\n  \"priceTarget\": \"<number>\",\n  \"analystCount\": \"<integer>\",\n  \"consensusDate\": \"<date>\"\n}",
+                      "createdAt": "2026-10-22T02:04:06.000Z",
+                      "updatedAt": "2026-10-22T02:04:06.000Z",
+                      "uid": "35240-32d23243-9a30-4352-8e92-9b3b9bb93b0f"
+                    },
+                    {
+                      "id": "c90e4087-fdf6-439e-ae23-e4e7d08c51f4",
+                      "name": "Security not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/securities/:securityId/research",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "securities",
+                            ":securityId",
+                            "research"
+                          ],
+                          "variable": [
+                            {
+                              "key": "securityId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:06.000Z",
+                      "updatedAt": "2026-10-22T02:04:06.000Z",
+                      "uid": "35240-c90e4087-fdf6-439e-ae23-e4e7d08c51f4"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:04:06.000Z",
+                  "updatedAt": "2026-10-22T02:04:06.000Z",
+                  "uid": "35240-8eb05edf-9d2c-4940-a902-3c8fd712935f"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "d06fd248-7e43-40b3-a31a-3b57531a6909",
+              "createdAt": "2026-10-22T02:04:06.000Z",
+              "updatedAt": "2026-10-22T02:04:06.000Z",
+              "uid": "35240-d06fd248-7e43-40b3-a31a-3b57531a6909"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a389171b-aa2e-4312-aedb-b5ab21da6c41",
+          "createdAt": "2026-10-22T02:04:06.000Z",
+          "updatedAt": "2026-10-22T02:04:06.000Z",
+          "uid": "35240-a389171b-aa2e-4312-aedb-b5ab21da6c41"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.blackrock.com/adc/v1",
-      "key": "baseUrl"
+      "id": "3a68469d-6fd3-4a67-bf73-f914593c605d",
+      "createdAt": "2026-10-22T02:04:06.000Z",
+      "updatedAt": "2026-10-22T02:04:06.000Z",
+      "uid": "35240-3a68469d-6fd3-4a67-bf73-f914593c605d"
     }
   ],
   "auth": {
@@ -172,25 +173,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "adc:read"
+        "value": "research:read analytics:read",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://api.blackrock.com/oauth/token"
+        "value": "https://api.blackrock.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "537195b0-ab2e-4234-ab9c-bf86146d9763",
-    "name": "Aladdin Data Cloud Analytics Research API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.blackrock.com/research/v1"
     }
-  }
+  ]
 }

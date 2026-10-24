@@ -1,187 +1,192 @@
 {
+  "info": {
+    "_postman_id": "81839ff9-ccf6-427e-ac67-c7bc39b382fd",
+    "name": "Aladdin Data Cloud Datasets API",
+    "description": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:03:31.000Z",
+    "updatedAt": "2026-10-22T02:03:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-81839ff9-ccf6-427e-ac67-c7bc39b382fd"
+  },
   "item": [
     {
-      "id": "0280c6f8-01b2-4960-af36-cd036c782cef",
-      "name": "Datasets",
-      "description": {
-        "content": "Available dataset and table discovery",
-        "type": "text/plain"
-      },
+      "name": "connections",
       "item": [
         {
-          "id": "761ecfa3-9aeb-4d73-962c-d9ff7b3c5d65",
-          "name": "Aladdin Studio List Available Datasets",
-          "request": {
-            "name": "Aladdin Studio List Available Datasets",
-            "description": {
-              "content": "List available datasets and tables in the Aladdin Data Cloud for the given connection, including portfolio data, risk analytics, and reference data tables.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "connections",
-                ":connectionId",
-                "datasets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "schema",
-                  "value": "<string>",
-                  "description": "Snowflake schema to filter datasets"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) Data Cloud connection identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{connectionId}",
+          "item": [
             {
-              "id": "1b4c18d3-ac9d-40cb-8af4-3a7ad7cc9b3e",
-              "name": "Available datasets",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "connections",
-                    ":connectionId",
-                    "datasets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "schema",
-                      "value": "PORTFOLIO"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) Data Cloud connection identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+              "name": "datasets",
+              "item": [
+                {
+                  "name": "Aladdin Studio List Available Datasets",
+                  "id": "c150eaf4-ff55-4ad3-aba9-f9ee79ff45c5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"datasets\": [\n    {\n      \"datasetId\": \"PORTFOLIO.HOLDINGS\",\n      \"name\": \"Portfolio Holdings\",\n      \"schema\": \"PORTFOLIO\",\n      \"description\": \"Daily portfolio positions and holdings\",\n      \"lastUpdated\": \"2026-04-19T00:00:00Z\"\n    },\n    {\n      \"datasetId\": \"RISK.FACTOR_EXPOSURES\",\n      \"name\": \"Factor Exposures\",\n      \"schema\": \"RISK\",\n      \"description\": \"Risk factor exposure data by portfolio\",\n      \"lastUpdated\": \"2026-04-19T06:00:00Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bc58c0ae-5e26-46ee-9e38-417ae4112830",
-              "name": "Connection not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "connections",
-                    ":connectionId",
-                    "datasets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "schema",
-                      "value": "PORTFOLIO"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) Data Cloud connection identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/connections/:connectionId/datasets?schema=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connections",
+                        ":connectionId",
+                        "datasets"
+                      ],
+                      "query": [
+                        {
+                          "description": "Snowflake schema to filter datasets",
+                          "key": "schema",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9df7f01f-9eff-47a3-8f74-cae10e8a845a",
+                          "key": "connectionId",
+                          "value": "<string>",
+                          "description": "(Required) Data Cloud connection identifier"
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    "description": "List available datasets and tables in the Aladdin Data Cloud for the given connection, including portfolio data, risk analytics, and reference data tables."
+                  },
+                  "response": [
+                    {
+                      "id": "1ce2b5f6-7f77-47a1-97e8-77ac2f2d05e7",
+                      "name": "Available datasets",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connections/:connectionId/datasets?schema=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connections",
+                            ":connectionId",
+                            "datasets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Snowflake schema to filter datasets",
+                              "key": "schema",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"datasets\": [\n    {\n      \"datasetId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"schema\": \"<string>\",\n      \"description\": \"<string>\",\n      \"lastUpdated\": \"<dateTime>\"\n    },\n    {\n      \"datasetId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"schema\": \"<string>\",\n      \"description\": \"<string>\",\n      \"lastUpdated\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:03:32.000Z",
+                      "updatedAt": "2026-10-22T02:03:32.000Z",
+                      "uid": "35240-1ce2b5f6-7f77-47a1-97e8-77ac2f2d05e7"
+                    },
+                    {
+                      "id": "5f6a41cd-6909-4713-b33e-de103a8735c0",
+                      "name": "Connection not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connections/:connectionId/datasets?schema=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connections",
+                            ":connectionId",
+                            "datasets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Snowflake schema to filter datasets",
+                              "key": "schema",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:03:32.000Z",
+                      "updatedAt": "2026-10-22T02:03:32.000Z",
+                      "uid": "35240-5f6a41cd-6909-4713-b33e-de103a8735c0"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:03:32.000Z",
+                  "updatedAt": "2026-10-22T02:03:32.000Z",
+                  "uid": "35240-c150eaf4-ff55-4ad3-aba9-f9ee79ff45c5"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "6422a7b1-507f-41d2-af07-a4e9be8f2365",
+              "createdAt": "2026-10-22T02:03:32.000Z",
+              "updatedAt": "2026-10-22T02:03:32.000Z",
+              "uid": "35240-6422a7b1-507f-41d2-af07-a4e9be8f2365"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6a5946fc-d483-4573-a5a3-5d3192e402b7",
+          "createdAt": "2026-10-22T02:03:32.000Z",
+          "updatedAt": "2026-10-22T02:03:32.000Z",
+          "uid": "35240-6a5946fc-d483-4573-a5a3-5d3192e402b7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.blackrock.com/adc/v1",
-      "key": "baseUrl"
+      "id": "5fe01ca2-42f2-47da-b536-6c0db4082568",
+      "createdAt": "2026-10-22T02:03:32.000Z",
+      "updatedAt": "2026-10-22T02:03:32.000Z",
+      "uid": "35240-5fe01ca2-42f2-47da-b536-6c0db4082568"
     }
   ],
   "auth": {
@@ -189,25 +194,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "adc:read"
+        "value": "adc:read",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://api.blackrock.com/oauth/token"
+        "value": "https://api.blackrock.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4e6fa60a-abec-4a9c-a1d6-d6114047796e",
-    "name": "Aladdin Data Cloud Analytics Datasets API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.blackrock.com/adc/v1"
     }
-  }
+  ]
 }

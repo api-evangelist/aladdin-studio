@@ -1,363 +1,346 @@
 {
+  "info": {
+    "_postman_id": "1e99e87e-196e-4b91-ac44-c4dfd2fd4af1",
+    "name": "Aladdin Graph Portfolios API",
+    "description": "The Aladdin Graph API provides RESTful access to portfolio data, securities, positions, risk analytics, and Aladdin platform capabilities. Powers the AladdinSDK Python client with OpenAPI-generated bindings for institutional asset managers, risk teams, and quantitative researchers.\n\nContact Support:\n Name: Aladdin Studio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:03:42.000Z",
+    "updatedAt": "2026-10-22T02:03:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e99e87e-196e-4b91-ac44-c4dfd2fd4af1"
+  },
   "item": [
     {
-      "id": "67fc9e20-bdaa-40ca-868f-465d3493822f",
-      "name": "Portfolios",
-      "description": {
-        "content": "Portfolio metadata and management operations",
-        "type": "text/plain"
-      },
+      "name": "portfolios",
       "item": [
         {
-          "id": "ae9e98dd-2de1-48ef-982e-332e501550fe",
+          "name": "{portfolioId}",
+          "item": [
+            {
+              "name": "Aladdin Studio Get Portfolio",
+              "id": "a9843394-1c1f-4696-990c-1cd948757a31",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/portfolios/:portfolioId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portfolios",
+                    ":portfolioId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b28d81ed-1a80-4b55-a4d4-a36566ade989",
+                      "key": "portfolioId",
+                      "value": "<string>",
+                      "description": "(Required) Unique portfolio identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve detailed information about a specific portfolio including metadata, benchmark, currency, and classification attributes."
+              },
+              "response": [
+                {
+                  "id": "171a25aa-e415-4c59-aff5-cc7730442558",
+                  "name": "Portfolio details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portfolios/:portfolioId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portfolios",
+                        ":portfolioId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "portfolioId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"portfolioId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"inactive\",\n  \"benchmarkId\": \"<string>\",\n  \"inceptionDate\": \"<date>\",\n  \"assetClass\": \"<string>\",\n  \"strategy\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:03:42.000Z",
+                  "updatedAt": "2026-10-22T02:03:42.000Z",
+                  "uid": "35240-171a25aa-e415-4c59-aff5-cc7730442558"
+                },
+                {
+                  "id": "35fdf5e7-6b69-4bda-af48-fb675d5d77ec",
+                  "name": "Portfolio not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portfolios/:portfolioId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portfolios",
+                        ":portfolioId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "portfolioId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:03:42.000Z",
+                  "updatedAt": "2026-10-22T02:03:42.000Z",
+                  "uid": "35240-35fdf5e7-6b69-4bda-af48-fb675d5d77ec"
+                }
+              ],
+              "createdAt": "2026-10-22T02:03:42.000Z",
+              "updatedAt": "2026-10-22T02:03:42.000Z",
+              "uid": "35240-a9843394-1c1f-4696-990c-1cd948757a31"
+            }
+          ],
+          "id": "ca324867-6e3f-4a19-bf1b-ddc6a462a99e",
+          "createdAt": "2026-10-22T02:03:42.000Z",
+          "updatedAt": "2026-10-22T02:03:42.000Z",
+          "uid": "35240-ca324867-6e3f-4a19-bf1b-ddc6a462a99e"
+        },
+        {
           "name": "Aladdin Studio List Portfolios",
+          "id": "bd8f906f-7e12-4373-8b82-feb30bec46ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Aladdin Studio List Portfolios",
-            "description": {
-              "content": "Retrieve a paginated list of portfolios accessible to the authenticated user. Returns portfolio metadata including identifiers, names, and classification attributes.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/portfolios?page=<integer>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "portfolios"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Page number for pagination",
                   "key": "page",
-                  "value": "<integer>",
-                  "description": "Page number for pagination"
+                  "value": "<integer>"
                 },
                 {
-                  "disabled": false,
+                  "description": "Number of results per page",
                   "key": "pageSize",
-                  "value": "<integer>",
-                  "description": "Number of results per page"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e9e9f33e-e896-4d3b-af1d-5fdade57e3d0",
-              "name": "List of portfolios",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "portfolios"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "pageSize",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"portfolios\": [\n    {\n      \"portfolioId\": \"PF-123456\",\n      \"name\": \"Global Equity Fund\",\n      \"currency\": \"USD\",\n      \"status\": \"active\"\n    }\n  ],\n  \"totalCount\": 1,\n  \"page\": 1,\n  \"pageSize\": 100\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fb83ff88-a658-4697-9754-6dd33e4fae56",
-              "name": "Unauthorized - invalid or missing authentication",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "portfolios"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "pageSize",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3398d6b1-33b8-46f0-a79d-afb5af1c0c47",
-              "name": "Forbidden - insufficient permissions for this portfolio",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "portfolios"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "pageSize",
-                      "value": "100"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "750109c6-43b1-4805-b2ab-7f4a82d8b202",
-          "name": "Aladdin Studio Get Portfolio",
-          "request": {
-            "name": "Aladdin Studio Get Portfolio",
-            "description": {
-              "content": "Retrieve detailed information about a specific portfolio including metadata, benchmark, currency, and classification attributes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "portfolios",
-                ":portfolioId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "portfolioId",
-                  "description": "(Required) Unique portfolio identifier"
+                  "value": "<integer>"
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve a paginated list of portfolios accessible to the authenticated user. Returns portfolio metadata including identifiers, names, and classification attributes."
           },
           "response": [
             {
-              "id": "cb7de26d-e161-4e00-9571-53bc063e9bc7",
-              "name": "Portfolio details",
+              "id": "5bbee8fb-32ea-45f6-ba63-d3a686c6d1e1",
+              "name": "List of portfolios",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "portfolios",
-                    ":portfolioId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "portfolioId",
-                      "description": "(Required) Unique portfolio identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/portfolios?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portfolios"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"portfolioId\": \"PF-123456\",\n  \"name\": \"Global Equity Fund\",\n  \"currency\": \"USD\",\n  \"status\": \"active\",\n  \"benchmarkId\": \"MSCI-WORLD\",\n  \"inceptionDate\": \"2020-01-15\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"portfolios\": [\n    {\n      \"portfolioId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"status\": \"inactive\",\n      \"benchmarkId\": \"<string>\",\n      \"inceptionDate\": \"<date>\",\n      \"assetClass\": \"<string>\",\n      \"strategy\": \"<string>\"\n    },\n    {\n      \"portfolioId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"status\": \"pending\",\n      \"benchmarkId\": \"<string>\",\n      \"inceptionDate\": \"<date>\",\n      \"assetClass\": \"<string>\",\n      \"strategy\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T02:03:42.000Z",
+              "updatedAt": "2026-10-22T02:03:42.000Z",
+              "uid": "35240-5bbee8fb-32ea-45f6-ba63-d3a686c6d1e1"
             },
             {
-              "id": "fa15d1d4-2cb5-4d39-ad2d-a12d73ea0db1",
-              "name": "Portfolio not found",
+              "id": "9ca1568f-d4eb-46b2-98e9-ffe79bd9aee9",
+              "name": "Unauthorized - invalid or missing authentication",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "portfolios",
-                    ":portfolioId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "portfolioId",
-                      "description": "(Required) Unique portfolio identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: oauth2",
                     "key": "Authorization",
                     "value": "<token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                "url": {
+                  "raw": "{{baseUrl}}/portfolios?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portfolios"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
                 }
-              ],
-              "body": "",
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:03:42.000Z",
+              "updatedAt": "2026-10-22T02:03:42.000Z",
+              "uid": "35240-9ca1568f-d4eb-46b2-98e9-ffe79bd9aee9"
+            },
+            {
+              "id": "08f70df2-83b0-4b1e-ba53-910e56863eba",
+              "name": "Forbidden - insufficient permissions for this portfolio",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/portfolios?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portfolios"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:03:42.000Z",
+              "updatedAt": "2026-10-22T02:03:42.000Z",
+              "uid": "35240-08f70df2-83b0-4b1e-ba53-910e56863eba"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:03:42.000Z",
+          "updatedAt": "2026-10-22T02:03:42.000Z",
+          "uid": "35240-bd8f906f-7e12-4373-8b82-feb30bec46ef"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.blackrock.com/adc/v1",
-      "key": "baseUrl"
+      "id": "6c9c895e-3f98-4b92-9003-492d8fc650cb",
+      "createdAt": "2026-10-22T02:03:42.000Z",
+      "updatedAt": "2026-10-22T02:03:42.000Z",
+      "uid": "35240-6c9c895e-3f98-4b92-9003-492d8fc650cb"
     }
   ],
   "auth": {
@@ -365,25 +348,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "adc:read"
+        "value": "portfolio:read risk:read trading:read trading:write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://api.blackrock.com/oauth/token"
+        "value": "https://api.blackrock.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "7f5dcc54-b077-4445-8802-8ec0525e728b",
-    "name": "Aladdin Data Cloud Analytics Portfolios API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.blackrock.com/v1"
     }
-  }
+  ]
 }

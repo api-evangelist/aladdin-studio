@@ -1,184 +1,180 @@
 {
+  "info": {
+    "_postman_id": "5817b20b-df74-4d2b-afbc-78a26582f1fc",
+    "name": "Aladdin Graph Securities API",
+    "description": "The Aladdin Graph API provides RESTful access to portfolio data, securities, positions, risk analytics, and Aladdin platform capabilities. Powers the AladdinSDK Python client with OpenAPI-generated bindings for institutional asset managers, risk teams, and quantitative researchers.\n\nContact Support:\n Name: Aladdin Studio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:04:16.000Z",
+    "updatedAt": "2026-10-22T02:04:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5817b20b-df74-4d2b-afbc-78a26582f1fc"
+  },
   "item": [
     {
-      "id": "74859435-2e44-4744-a84d-50d19b7f657a",
-      "name": "Securities",
-      "description": {
-        "content": "Security reference data and classification",
-        "type": "text/plain"
-      },
+      "name": "securities",
       "item": [
         {
-          "id": "24e51d99-e3cd-4999-99fc-b172e00b8ec2",
-          "name": "Aladdin Studio Get Security",
-          "request": {
-            "name": "Aladdin Studio Get Security",
-            "description": {
-              "content": "Retrieve security reference data for a given identifier including name, asset class, sector, country, and other classification attributes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "securities",
-                ":securityId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "idType",
-                  "value": "<string>",
-                  "description": "Type of security identifier provided"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "securityId",
-                  "description": "(Required) Security identifier (ISIN, CUSIP, SEDOL, or internal ID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{securityId}",
+          "item": [
             {
-              "id": "a8de3a09-f59b-4973-b403-501a8f6de8fd",
-              "name": "Security reference data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "securities",
-                    ":securityId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "idType",
-                      "value": "ISIN"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "securityId",
-                      "description": "(Required) Security identifier (ISIN, CUSIP, SEDOL, or internal ID)"
-                    }
-                  ]
-                },
+              "name": "Aladdin Studio Get Security",
+              "id": "a0ce445e-33f9-4265-bfe9-f9da15db5772",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"securityId\": \"US0378331005\",\n  \"name\": \"Apple Inc\",\n  \"ticker\": \"AAPL\",\n  \"assetClass\": \"Equity\",\n  \"sector\": \"Technology\",\n  \"country\": \"US\",\n  \"currency\": \"USD\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ff2ad4aa-e8c4-4db3-861a-99842f89888a",
-              "name": "Security not found",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/securities/:securityId?idType=SEDOL",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "securities",
                     ":securityId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Type of security identifier provided",
                       "key": "idType",
-                      "value": "ISIN"
+                      "value": "SEDOL"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "a21203cb-e485-434e-9ba7-e26702f1cfb5",
                       "key": "securityId",
+                      "value": "<string>",
                       "description": "(Required) Security identifier (ISIN, CUSIP, SEDOL, or internal ID)"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve security reference data for a given identifier including name, asset class, sector, country, and other classification attributes."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "699ff208-7329-4cae-a0d4-dda19e720638",
+                  "name": "Security reference data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/securities/:securityId?idType=SEDOL",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "securities",
+                        ":securityId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of security identifier provided",
+                          "key": "idType",
+                          "value": "SEDOL"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "securityId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"securityId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ticker\": \"<string>\",\n  \"isin\": \"<string>\",\n  \"cusip\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"sector\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"exchange\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:04:16.000Z",
+                  "updatedAt": "2026-10-22T02:04:16.000Z",
+                  "uid": "35240-699ff208-7329-4cae-a0d4-dda19e720638"
+                },
+                {
+                  "id": "959d512a-70f5-4cb8-a0eb-ca48dbca559d",
+                  "name": "Security not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/securities/:securityId?idType=SEDOL",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "securities",
+                        ":securityId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of security identifier provided",
+                          "key": "idType",
+                          "value": "SEDOL"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "securityId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:04:16.000Z",
+                  "updatedAt": "2026-10-22T02:04:16.000Z",
+                  "uid": "35240-959d512a-70f5-4cb8-a0eb-ca48dbca559d"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T02:04:16.000Z",
+              "updatedAt": "2026-10-22T02:04:16.000Z",
+              "uid": "35240-a0ce445e-33f9-4265-bfe9-f9da15db5772"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "47adcb57-25f1-4131-a542-143893fd433b",
+          "createdAt": "2026-10-22T02:04:16.000Z",
+          "updatedAt": "2026-10-22T02:04:16.000Z",
+          "uid": "35240-47adcb57-25f1-4131-a542-143893fd433b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.blackrock.com/adc/v1",
-      "key": "baseUrl"
+      "id": "adab0f54-387e-4901-8274-db273df2822e",
+      "createdAt": "2026-10-22T02:04:16.000Z",
+      "updatedAt": "2026-10-22T02:04:16.000Z",
+      "uid": "35240-adab0f54-387e-4901-8274-db273df2822e"
     }
   ],
   "auth": {
@@ -186,25 +182,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "adc:read"
+        "value": "portfolio:read risk:read trading:read trading:write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://api.blackrock.com/oauth/token"
+        "value": "https://api.blackrock.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f0acff55-633c-4b8a-88fb-c79a0bc6f6fd",
-    "name": "Aladdin Data Cloud Analytics Securities API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing for large-scale portfolio analytics and data science workflows. Supports OAuth and Snowflake JWT authentication with both standard Snowflake connectors and Snowpark for Python.\n\nContact Support:\n Name: Aladdin Studio",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.blackrock.com/v1"
     }
-  }
+  ]
 }
