@@ -1,4 +1,4 @@
-# Aladdin Studio (aladdin-studio)
+# Aladdin Studio
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,223 +66,228 @@
 
 Aladdin Studio is BlackRock's developer platform enabling institutional investors, asset managers, and wealth managers to build custom solutions on top of the Aladdin investment operating system. APIs provide access to portfolio data, risk analytics, trading, investment research, and the Aladdin Data Cloud, supporting approximately $25 trillion in assets managed on the platform.
 
-**URL:** [https://www.blackrock.com/aladdin/products/apis](https://www.blackrock.com/aladdin/products/apis)
+**Areas:** Finance · Investment Management · Portfolio Analytics · Risk Management · Asset Management · BlackRock · Data Cloud
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Aladdin Studio on APIs.io
 
-## Tags:
+Everything profiled for Aladdin Studio is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aladdin-studio/](https://apis.io/providers/aladdin-studio/)** — or go straight to one of the APIs or properties below.
 
- - Financial, Investment Management, Portfolio Analytics, Risk Management, Asset Management, BlackRock, Data Cloud
+### APIs (10)
 
-## Timestamps
+- [Aladdin Studio Analytics API](https://apis.io/apis/aladdin-studio/aladdin-studio-analytics-api/) — Portfolio performance and attribution analytics
+- [Aladdin Studio Connections API](https://apis.io/apis/aladdin-studio/aladdin-studio-connections-api/) — Aladdin Data Cloud Snowflake connection management
+- [Aladdin Studio Datasets API](https://apis.io/apis/aladdin-studio/aladdin-studio-datasets-api/) — Available dataset and table discovery
+- [Aladdin Studio Orders API](https://apis.io/apis/aladdin-studio/aladdin-studio-orders-api/) — Trading order management and execution
+- [Aladdin Studio Portfolios API](https://apis.io/apis/aladdin-studio/aladdin-studio-portfolios-api/) — Portfolio metadata and management operations
+- [Aladdin Studio Positions API](https://apis.io/apis/aladdin-studio/aladdin-studio-positions-api/) — Portfolio position and holdings data
+- [Aladdin Studio Queries API](https://apis.io/apis/aladdin-studio/aladdin-studio-queries-api/) — SQL query execution against Data Cloud datasets
+- [Aladdin Studio Research API](https://apis.io/apis/aladdin-studio/aladdin-studio-research-api/) — Investment research data and analyst ratings
+- [Aladdin Studio Risk API](https://apis.io/apis/aladdin-studio/aladdin-studio-risk-api/) — Risk analytics and factor exposure calculations
+- [Aladdin Studio Securities API](https://apis.io/apis/aladdin-studio/aladdin-studio-securities-api/) — Security reference data and classification
 
-- **Created:** 2024-03-05
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Aladdin Graph API
-The Aladdin Graph API provides RESTful access to portfolio data, securities, positions, risk analytics, and other Aladdin platform capabilities. Powers the AladdinSDK Python client with OAuth and Basic Auth authentication.
+#### Agentic access (1)
 
-**Human URL:** [https://www.blackrock.com/aladdin/products/apis](https://www.blackrock.com/aladdin/products/apis)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Aladdin Studio Agentic Access](https://apis.io/agentic-access/aladdin-studio/aladdin-studio-agentic-access/)
 
- - Portfolio Data, Investment Management, REST
+#### JSON Schema (18)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [APIReference](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/_ae-authored/aladdin-studio-graph-openapi.yaml)
-- [JSONSchema - Portfolio](json-schema/aladdin-studio-graph-portfolio-schema.json)
-- [JSONSchema - Position](json-schema/aladdin-studio-graph-position-schema.json)
-- [JSONSchema - Portfolio Risk](json-schema/aladdin-studio-graph-portfolio-risk-schema.json)
-- [JSONSchema - Security](json-schema/aladdin-studio-graph-security-schema.json)
+- [Connection](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-connection/)
+- [ConnectionList](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-connection-list/)
+- [Dataset](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-dataset/)
+- [DatasetList](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-dataset-list/)
+- [QueryRequest](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-query-request/)
+- [QueryResult](https://apis.io/schemas/aladdin-studio/aladdin-studio-data-cloud-query-result/)
+- [FactorExposure](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-factor-exposure/)
+- [Portfolio](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-portfolio/)
+- [PortfolioList](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-portfolio-list/)
+- [PortfolioRisk](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-portfolio-risk/)
+- [Position](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-position/)
+- [PositionList](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-position-list/)
+- [Security](https://apis.io/schemas/aladdin-studio/aladdin-studio-graph-security/)
+- [PortfolioAnalytics](https://apis.io/schemas/aladdin-studio/aladdin-studio-investment-research-portfolio-analytics/)
+- [SecurityResearch](https://apis.io/schemas/aladdin-studio/aladdin-studio-investment-research-security-research/)
+- [Order](https://apis.io/schemas/aladdin-studio/aladdin-studio-trading-order/)
+- [OrderList](https://apis.io/schemas/aladdin-studio/aladdin-studio-trading-order-list/)
+- [OrderRequest](https://apis.io/schemas/aladdin-studio/aladdin-studio-trading-order-request/)
 
-### Aladdin Data Cloud API
-The Aladdin Data Cloud API provides access to Snowflake-based analytics data warehousing with OAuth and JWT authentication. Enables large-scale portfolio analytics and data science workflows using Snowflake connectors and Snowpark.
+#### JSON Structure (18)
 
-**Human URL:** [https://www.blackrock.com/aladdin/products/apis](https://www.blackrock.com/aladdin/products/apis)
+Data models expressed in JSON Structure.
 
-#### Tags:
+- [Aladdin Studio Data Cloud Connection List Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-connection-list-structure/)
+- [Aladdin Studio Data Cloud Connection Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-connection-structure/)
+- [Aladdin Studio Data Cloud Dataset List Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-dataset-list-structure/)
+- [Aladdin Studio Data Cloud Dataset Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-dataset-structure/)
+- [Aladdin Studio Data Cloud Query Request Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-query-request-structure/)
+- [Aladdin Studio Data Cloud Query Result Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-data-cloud-query-result-structure/)
+- [Aladdin Studio Graph Factor Exposure Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-factor-exposure-structure/)
+- [Aladdin Studio Graph Portfolio List Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-portfolio-list-structure/)
+- [Aladdin Studio Graph Portfolio Risk Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-portfolio-risk-structure/)
+- [Aladdin Studio Graph Portfolio Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-portfolio-structure/)
+- [Aladdin Studio Graph Position List Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-position-list-structure/)
+- [Aladdin Studio Graph Position Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-position-structure/)
+- [Aladdin Studio Graph Security Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-graph-security-structure/)
+- [Aladdin Studio Investment Research Portfolio Analytics Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-investment-research-portfolio-analytics-structure/)
+- [Aladdin Studio Investment Research Security Research Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-investment-research-security-research-structure/)
+- [Aladdin Studio Trading Order List Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-trading-order-list-structure/)
+- [Aladdin Studio Trading Order Request Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-trading-order-request-structure/)
+- [Aladdin Studio Trading Order Structure](https://apis.io/json-structure/aladdin-studio/aladdin-studio-trading-order-structure/)
 
- - Data Cloud, Snowflake, Analytics
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/_ae-authored/aladdin-studio-data-cloud-openapi.yaml)
-- [JSONSchema - Connection](json-schema/aladdin-studio-data-cloud-connection-schema.json)
-- [JSONSchema - Query Request](json-schema/aladdin-studio-data-cloud-query-request-schema.json)
-- [JSONSchema - Query Result](json-schema/aladdin-studio-data-cloud-query-result-schema.json)
-- [JSONSchema - Dataset](json-schema/aladdin-studio-data-cloud-dataset-schema.json)
+- [Aladdin Studio Context](https://apis.io/jsonld/aladdin-studio/aladdin-studio-context/)
 
-### Aladdin Trading API
-The Aladdin Trading API enables order management and trading workflow integration. Available as the asdk_plugin_trading Python package built on the AladdinSDK framework.
+#### Vocabulary (1)
 
-**Human URL:** [https://www.blackrock.com/aladdin/products/apis](https://www.blackrock.com/aladdin/products/apis)
+The provider's domain terms, defined.
 
-#### Tags:
+- [Aladdin Studio Vocabulary](https://apis.io/vocabularies/aladdin-studio/aladdin-studio-vocabulary/)
 
- - Trading, Order Management, Financial
+#### Examples (18)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/_ae-authored/aladdin-studio-trading-openapi.yaml)
-- [SDK - Python Trading Plugin](https://pypi.org/project/asdk-plugin-trading/)
-- [JSONSchema - Order](json-schema/aladdin-studio-trading-order-schema.json)
+- [Aladdin Studio Data Cloud Connection Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-connection-example/)
+- [Aladdin Studio Data Cloud Connection List Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-connection-list-example/)
+- [Aladdin Studio Data Cloud Dataset Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-dataset-example/)
+- [Aladdin Studio Data Cloud Dataset List Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-dataset-list-example/)
+- [Aladdin Studio Data Cloud Query Request Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-query-request-example/)
+- [Aladdin Studio Data Cloud Query Result Example](https://apis.io/examples/aladdin-studio/aladdin-studio-data-cloud-query-result-example/)
+- [Aladdin Studio Graph Factor Exposure Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-factor-exposure-example/)
+- [Aladdin Studio Graph Portfolio Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-portfolio-example/)
+- [Aladdin Studio Graph Portfolio List Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-portfolio-list-example/)
+- [Aladdin Studio Graph Portfolio Risk Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-portfolio-risk-example/)
+- [Aladdin Studio Graph Position Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-position-example/)
+- [Aladdin Studio Graph Position List Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-position-list-example/)
+- [Aladdin Studio Graph Security Example](https://apis.io/examples/aladdin-studio/aladdin-studio-graph-security-example/)
+- [Aladdin Studio Investment Research Portfolio Analytics Example](https://apis.io/examples/aladdin-studio/aladdin-studio-investment-research-portfolio-analytics-example/)
+- [Aladdin Studio Investment Research Security Research Example](https://apis.io/examples/aladdin-studio/aladdin-studio-investment-research-security-research-example/)
+- [Aladdin Studio Trading Order Example](https://apis.io/examples/aladdin-studio/aladdin-studio-trading-order-example/)
+- [Aladdin Studio Trading Order List Example](https://apis.io/examples/aladdin-studio/aladdin-studio-trading-order-list-example/)
+- [Aladdin Studio Trading Order Request Example](https://apis.io/examples/aladdin-studio/aladdin-studio-trading-order-request-example/)
 
-### Aladdin Investment Research API
-The Aladdin Investment Research API provides access to research data, analyst insights, and quantitative analytics built on Aladdin's data infrastructure. Available as the asdk_plugin_investment_research Python package.
+#### Collections (10)
 
-**Human URL:** [https://www.blackrock.com/aladdin/products/apis](https://www.blackrock.com/aladdin/products/apis)
+Postman and Open Collection request collections.
 
-#### Tags:
+- [Aladdin Data Cloud Analytics API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-analytics-api/)
+- [Aladdin Data Cloud Analytics Connections API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-connections-api/)
+- [Aladdin Data Cloud Analytics Datasets API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-datasets-api/)
+- [Aladdin Data Cloud Analytics Orders API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-orders-api/)
+- [Aladdin Data Cloud Analytics Portfolios API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-portfolios-api/)
+- [Aladdin Data Cloud Analytics Positions API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-positions-api/)
+- [Aladdin Data Cloud Analytics Queries API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-queries-api/)
+- [Aladdin Data Cloud Analytics Research API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-research-api/)
+- [Aladdin Data Cloud Analytics Risk API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-risk-api/)
+- [Aladdin Data Cloud Analytics Securities API](https://apis.io/collections/aladdin-studio/open-aladdin-studio-securities-api/)
 
- - Investment Research, Analytics, Portfolio
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://www.blackrock.com/aladdin/products/apis)
-- [OpenAPI](openapi/_ae-authored/aladdin-studio-investment-research-openapi.yaml)
-- [SDK - Python Investment Research Plugin](https://pypi.org/project/asdk-plugin-investment-research/)
-- [JSONSchema - Security Research](json-schema/aladdin-studio-investment-research-security-research-schema.json)
-- [JSONSchema - Portfolio Analytics](json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json)
+- [Aladdin Studio — jsonschema rules](https://apis.io/rules/aladdin-studio/aladdin-studio-jsonschema-spectral-rules/)
+- [Aladdin Studio API Rules](https://apis.io/rules/aladdin-studio/aladdin-studio-spectral-rules/)
 
-## Common Properties
+#### Security (2)
 
-- [Portal](https://www.blackrock.com/aladdin/products/apis)
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aladdin Studio Authentication](https://apis.io/security/aladdin-studio/aladdin-studio-authentication/)
+- [Aladdin Studio Domain Security](https://apis.io/security/aladdin-studio/aladdin-studio-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Aladdin Studio Scopes](https://apis.io/scopes/aladdin-studio/aladdin-studio-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Aladdin Studio Plans Pricing](https://apis.io/plans/aladdin-studio/aladdin-studio-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aladdin Studio Rate Limits](https://apis.io/rate-limits/aladdin-studio/aladdin-studio-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Aladdin Studio Finops](https://apis.io/finops/aladdin-studio/aladdin-studio-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.blackrock.com/)
 - [Documentation](https://www.blackrock.com/aladdin/products/aladdin-studio)
-- [GitHubOrganization](https://github.com/blackrock)
-- [SDK - Python SDK (AladdinSDK)](https://github.com/blackrock/aladdinsdk)
-- [SDK - Python SDK (PyPI)](https://pypi.org/project/aladdinsdk/)
-- [SDK - Plugin Builder](https://github.com/blackrock/aladdinsdk-plugin-builder)
+- [GitHub](https://github.com/blackrock)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Portfolio Data Access | Retrieve comprehensive portfolio data including positions, holdings, securities, and performance metrics across asset classes. |
-| Risk Analytics | Access Aladdin's institutional-grade risk analytics including factor exposures, VaR, scenario analysis, and stress testing across public and private markets. |
-| Aladdin Data Cloud | Snowflake-based data warehousing providing access to large-scale portfolio analytics with OAuth and JWT authentication supporting both Snowflake connectors and Snowpark. |
-| Trading Integration | Order management and trading workflow APIs enabling integration with Aladdin's trading platform for order creation, tracking, and execution. |
-| Investment Research Access | APIs for accessing investment research data, analyst insights, and quantitative analytics built on Aladdin's data infrastructure. |
-| Long-Running Operations | Support for long-running operation (LRO) patterns with configurable polling, enabling asynchronous processing of computationally intensive analytics requests. |
-| Batch Processing | Batch API support with sequential and parallel execution capabilities for processing large volumes of portfolio data operations efficiently. |
-| Multi-Auth Support | Flexible authentication supporting Basic Auth with API tokens, OAuth client credentials flow, OAuth refresh token flow, and Snowflake JWT for Data Cloud access. |
-| Plugin Architecture | Extensible SDK plugin architecture enabling domain-specific packages (trading, investment research) built on top of the core AladdinSDK. |
-| Jupyter Notebook Integration | Downloadable Python Jupyter Notebooks and code samples in multiple languages for rapid solution development and prototyping. |
+**Kin Score 32.9** — thin · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 31.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 56.0 |
+| Access clarity | 5.3 |
 
-| Name | Description |
-|------|-------------|
-| Custom Portfolio Analytics | Build bespoke portfolio analysis tools using Aladdin's risk and performance data to generate custom insights for investment teams. |
-| Automated Risk Reporting | Automate generation of risk reports, factor exposure summaries, and stress test results using Aladdin's risk analytics APIs. |
-| Trading Workflow Automation | Integrate Aladdin trading data into proprietary order management systems and automate trading workflow processes. |
-| Investment Research Integration | Connect internal research platforms to Aladdin's investment research data for unified analyst workflow tooling. |
-| Data Science and Quantitative Research | Access Aladdin Data Cloud from Snowflake-based data science environments for quantitative model development and backtesting. |
-| Client Reporting Automation | Build automated client reporting solutions pulling portfolio performance, risk, and holdings data from Aladdin APIs. |
-| Multi-Asset Class Analytics | Analyze portfolios across public equities, fixed income, alternatives, and private markets using Aladdin's unified data platform. |
+**Agent readiness 29.5** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Snowflake | Native Aladdin Data Cloud integration with Snowflake for large-scale analytics, supporting both standard connectors and Snowpark for Python-based data science workflows. |
-| Amazon Web Services | Aladdin available on AWS infrastructure (general availability expected second half of 2026) complementing existing Azure deployment. |
-| Microsoft Azure | Primary cloud infrastructure for Aladdin platform, supporting enterprise deployments across institutional clients. |
-| Preqin | Private markets data integrated into Aladdin ecosystem following BlackRock's acquisition for alternatives and private market analytics. |
-| Python Ecosystem | First-class Python support via AladdinSDK on PyPI, with Jupyter Notebook examples and plugin architecture for domain extensions. |
-| RepRisk | ESG risk data integrated into Aladdin portfolio management for reputational and environmental risk analysis. |
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aladdin-studio/](https://apis.io/providers/aladdin-studio/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Aladdin Graph API](openapi/_ae-authored/aladdin-studio-graph-openapi.yaml)
-- [Aladdin Data Cloud API](openapi/_ae-authored/aladdin-studio-data-cloud-openapi.yaml)
-- [Aladdin Trading API](openapi/_ae-authored/aladdin-studio-trading-openapi.yaml)
-- [Aladdin Investment Research API](openapi/_ae-authored/aladdin-studio-investment-research-openapi.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aladdin Studio: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [aladdin-studio-graph-portfolio-schema.json](json-schema/aladdin-studio-graph-portfolio-schema.json)
-- [aladdin-studio-graph-portfolio-list-schema.json](json-schema/aladdin-studio-graph-portfolio-list-schema.json)
-- [aladdin-studio-graph-position-schema.json](json-schema/aladdin-studio-graph-position-schema.json)
-- [aladdin-studio-graph-position-list-schema.json](json-schema/aladdin-studio-graph-position-list-schema.json)
-- [aladdin-studio-graph-factor-exposure-schema.json](json-schema/aladdin-studio-graph-factor-exposure-schema.json)
-- [aladdin-studio-graph-portfolio-risk-schema.json](json-schema/aladdin-studio-graph-portfolio-risk-schema.json)
-- [aladdin-studio-graph-security-schema.json](json-schema/aladdin-studio-graph-security-schema.json)
-- [aladdin-studio-data-cloud-connection-schema.json](json-schema/aladdin-studio-data-cloud-connection-schema.json)
-- [aladdin-studio-data-cloud-connection-list-schema.json](json-schema/aladdin-studio-data-cloud-connection-list-schema.json)
-- [aladdin-studio-data-cloud-query-request-schema.json](json-schema/aladdin-studio-data-cloud-query-request-schema.json)
-- [aladdin-studio-data-cloud-query-result-schema.json](json-schema/aladdin-studio-data-cloud-query-result-schema.json)
-- [aladdin-studio-data-cloud-dataset-schema.json](json-schema/aladdin-studio-data-cloud-dataset-schema.json)
-- [aladdin-studio-data-cloud-dataset-list-schema.json](json-schema/aladdin-studio-data-cloud-dataset-list-schema.json)
-- [aladdin-studio-trading-order-schema.json](json-schema/aladdin-studio-trading-order-schema.json)
-- [aladdin-studio-trading-order-list-schema.json](json-schema/aladdin-studio-trading-order-list-schema.json)
-- [aladdin-studio-trading-order-request-schema.json](json-schema/aladdin-studio-trading-order-request-schema.json)
-- [aladdin-studio-investment-research-security-research-schema.json](json-schema/aladdin-studio-investment-research-security-research-schema.json)
-- [aladdin-studio-investment-research-portfolio-analytics-schema.json](json-schema/aladdin-studio-investment-research-portfolio-analytics-schema.json)
-
-### JSON Structure
-
-- [aladdin-studio-graph-portfolio-structure.json](json-structure/aladdin-studio-graph-portfolio-structure.json)
-- [aladdin-studio-graph-position-structure.json](json-structure/aladdin-studio-graph-position-structure.json)
-- [aladdin-studio-graph-portfolio-risk-structure.json](json-structure/aladdin-studio-graph-portfolio-risk-structure.json)
-- [aladdin-studio-graph-security-structure.json](json-structure/aladdin-studio-graph-security-structure.json)
-- [aladdin-studio-data-cloud-connection-structure.json](json-structure/aladdin-studio-data-cloud-connection-structure.json)
-- [aladdin-studio-data-cloud-query-result-structure.json](json-structure/aladdin-studio-data-cloud-query-result-structure.json)
-- [aladdin-studio-trading-order-structure.json](json-structure/aladdin-studio-trading-order-structure.json)
-- [aladdin-studio-investment-research-security-research-structure.json](json-structure/aladdin-studio-investment-research-security-research-structure.json)
-- [aladdin-studio-investment-research-portfolio-analytics-structure.json](json-structure/aladdin-studio-investment-research-portfolio-analytics-structure.json)
-
-### JSON-LD
-
-- [aladdin-studio-context.jsonld](json-ld/aladdin-studio-context.jsonld)
-
-### Examples
-
-- [aladdin-studio-graph-portfolio-example.json](examples/aladdin-studio-graph-portfolio-example.json)
-- [aladdin-studio-graph-position-example.json](examples/aladdin-studio-graph-position-example.json)
-- [aladdin-studio-graph-portfolio-risk-example.json](examples/aladdin-studio-graph-portfolio-risk-example.json)
-- [aladdin-studio-graph-security-example.json](examples/aladdin-studio-graph-security-example.json)
-- [aladdin-studio-data-cloud-connection-example.json](examples/aladdin-studio-data-cloud-connection-example.json)
-- [aladdin-studio-data-cloud-query-result-example.json](examples/aladdin-studio-data-cloud-query-result-example.json)
-- [aladdin-studio-trading-order-example.json](examples/aladdin-studio-trading-order-example.json)
-- [aladdin-studio-investment-research-security-research-example.json](examples/aladdin-studio-investment-research-security-research-example.json)
-- [aladdin-studio-investment-research-portfolio-analytics-example.json](examples/aladdin-studio-investment-research-portfolio-analytics-example.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Aladdin Graph API](capabilities/shared/graph-api.yaml) — 5 operations for portfolio, position, risk, and security data
-- [Aladdin Data Cloud API](capabilities/shared/data-cloud-api.yaml) — 3 operations for Snowflake analytics
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Portfolio Analytics](capabilities/portfolio-analytics.yaml) | aladdin-graph, aladdin-data-cloud | 7 | Portfolio Manager, Risk Analyst, Quantitative Researcher |
-
-## Vocabulary
-
-- [Aladdin Studio Vocabulary](vocabulary/aladdin-studio-vocabulary.yaml) — Unified taxonomy mapping 10 resources, 4 actions, 1 workflow, and 3 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Aladdin Studio Spectral Rules](rules/aladdin-studio-spectral-rules.yml) — 33 rules across 11 categories enforcing Aladdin Studio API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aladdin-studio/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
