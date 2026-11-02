@@ -1,0 +1,72 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Aladdin Studio
+providerId: aladdin-studio
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Financial
+  - Investment Management
+  - Portfolio Analytics
+  - Risk Management
+  - Asset Management
+  - BlackRock
+  - Data Cloud
+description: BlackRock Aladdin Studio is a private enterprise platform for institutional investment-management
+  clients. Pricing is contract-only and not published publicly. Aladdin client engagements are negotiated
+  by BlackRock with custom commercial terms based on AUM, modules used, seat counts, and integration scope.
+sources:
+  - https://www.blackrock.com/aladdin
+notes: No public pricing surface. Plans below are placeholder contract shells; replace with negotiated
+  contract terms when documented for a specific client deployment.
+plans:
+  - id: aladdin-studio-enterprise
+    name: Enterprise Contract
+    type: enterprise
+    description: Custom-negotiated Aladdin Studio engagement covering Aladdin Graph, Aladdin Data Cloud,
+      Aladdin Trading, and Aladdin Investment Research APIs. Pricing is bespoke per client.
+    entries:
+      - label: API Access
+        description: Negotiated API access volume - typical Aladdin contracts include integration to one
+          or more Aladdin module APIs
+        name: api_access
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: configurable
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Aladdin Graph API
+      - name: Aladdin Data Cloud API
+      - name: Aladdin Trading API
+      - name: Aladdin Investment Research API
+      - name: Dedicated Account Manager
+      - name: Contractual SLA
+      - name: Security & Compliance Review
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  plans:
+  - name: Enterprise Contract
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
